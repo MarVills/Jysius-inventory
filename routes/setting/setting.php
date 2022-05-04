@@ -17,6 +17,7 @@ use App\Http\Controllers\API\SmsTemplateController;
 use App\Http\Controllers\API\TaxController;
 use App\Http\Controllers\API\UpdateController;
 use App\Http\Controllers\API\UserController;
+use Illuminate\Support\Facades\Route;
 
 Route::post('template-list', [EmailTemplateController::class, 'index']);
 Route::get('/get-template-content/{id}', [EmailTemplateController::class, 'show'])->middleware('permissions:can_edit_email_template');

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\API\DashboardController;
 use App\Http\Controllers\API\ProfileController;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/dashboard-data', [DashboardController::class, 'getAllData']);
 Route::get('/dashBoard', [DashboardController::class, 'getData']);

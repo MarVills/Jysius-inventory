@@ -33,4 +33,5 @@
             route_name={{$route_name}}>
     </setting-index>
 
+
 @endsection

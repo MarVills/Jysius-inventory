@@ -4,6 +4,7 @@
 use App\Http\Controllers\API\CustomerController;
 use App\Http\Controllers\API\CustomerGroupController;
 use App\Http\Controllers\API\SupplierController;
+use Illuminate\Support\Facades\Route;
 
 Route::post('/customer-list', [CustomerController::class, 'getCustomerList']);
 Route::post('import-customer-contacts', [CustomerController::class, 'importCustomers']);

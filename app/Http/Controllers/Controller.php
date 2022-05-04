@@ -11,6 +11,8 @@ use App\Libraries\AllSettingFormat;
 // use Config;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
+use App\Http\Requests;
+use Illuminate\Http\Request;
 
 
 class Controller extends BaseController
@@ -23,8 +25,9 @@ class Controller extends BaseController
     public $app_name;
     public $sender_mail;
     public function __construct()
-    {
+    { 
         $installCheck = config('gain.installed');
+        // $this->appUrl = $request->root();
         $this->appUrl = \Request::root();
         $this->publicPath = $this->appUrl;
         $this->userss = Auth::user();

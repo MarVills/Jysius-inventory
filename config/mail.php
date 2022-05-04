@@ -26,10 +26,10 @@ return [
     | Here you may provide the host address of the SMTP server used by your
     | applications. A default option is provided that is compatible with
     | the Mailgun mail service which will provide reliable deliveries.
-    |
+    |smtp.gmail.com'
     */
 
-    'host' => env('MAIL_HOST', 'smtp.gmail.com'),
+    'host' => env('MAIL_HOST', 'smtp.mailtrap.io'),
 
     /*
     |--------------------------------------------------------------------------
@@ -42,7 +42,7 @@ return [
     |
     */
 
-    'port' => env('MAIL_PORT', 587),
+    'port' => env('MAIL_PORT', 2525),
 
     /*
     |--------------------------------------------------------------------------
@@ -52,12 +52,12 @@ return [
     | You may wish for all e-mails sent by your application to be sent from
     | the same address. Here, you may specify a name and address that is
     | used globally for all e-mails that are sent by your application.
-    |
+    | No-reply@gainbooking.com
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'No-reply@gainbooking.com'),
-        'name' => env('MAIL_FROM_NAME', 'Gain Booking'),
+        'address' => env('MAIL_FROM_ADDRESS', 'marbenvillaflor4@gmail.com'),
+        'name' => env('MAIL_FROM_NAME', 'Jysius'),
     ],
 
     /*

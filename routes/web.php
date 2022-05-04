@@ -4,6 +4,7 @@ use App\Http\Controllers\API\ProductsController;
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\ContactController;
 
 Route::group([], function () {
     require_once(__DIR__ . '/additional/additional.php');
@@ -26,11 +27,13 @@ Route::group(['middleware' => ['auth']], function () {
 
     //Clear language cache
     Route::get('/clear-language-cache', function () {
-        Artisan::call('cache:clear');
+     Artisan::call('cache:clear');
     });
 });
 
 //Storage link
 Route::get('storage-link', function () {
-    Artisan::call('storage:link');
+   Artisan::call('storage:link');
 });
+
+//Route::view('/contact', 'contactForm')->name('contactName');

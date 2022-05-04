@@ -15,8 +15,10 @@ use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use Illuminate\Support\Str;
-use Validator, Hash;
+//use Validator, Hash;
 use Config;
+use Illuminate\Http\Hash;
+//use Illuminate\Http\Client\Request;
 
 class InviteController extends Controller
 {
@@ -61,7 +63,7 @@ class InviteController extends Controller
                 $text = $content->default_content;
             }
 
-            $path = \Request::root();
+            $path = Request::root();
             $link = $path . '/accept/' . $token;
 
             $appName = Setting::getFirst('setting_value', 'setting_name', 'email_from_name')->setting_value;
