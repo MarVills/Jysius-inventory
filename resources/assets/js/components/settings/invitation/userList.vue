@@ -11,7 +11,7 @@
                         data-toggle="modal"
                         data-target="#user-invite-modal"
                         @click.prevent="addEditAction('')"
-                    >{{ trans('lang.add') }}</button>
+                    >{{ trans('lang.invite') }}</button>
                 </div>
             </div>
         </div>

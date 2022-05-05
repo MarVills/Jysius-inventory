@@ -8,8 +8,7 @@ use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [LoginController::class, 'showLoginForm'])
-    ->name('login');
+Route::get('/', [LoginController::class, 'showLoginForm'])->name('login');
 Route::get('/login', [LoginController::class, 'showLoginForm']);
 Route::post('/', [LoginController::class, 'login']);
 Route::get('/password/reset', [ForgotPasswordController::class, 'showLinkRequestForm']);
@@ -18,5 +17,6 @@ Route::post('/recover', [AuthController::class, 'recover']);
 Route::post('/password/reset/{token}', [ResetPasswordController::class, 'reset']);
 Route::get('/verify/{token}', [RegisterController::class, 'verifyUser']);
 Route::get('accept/{token}', [InviteController::class, 'accept']);
+// Route::get('register{token}', [RegisterController::class, 'regForm']);
 Route::get('register/{token}', [RegisterController::class, 'regForm']);
 Route::post('register/{token}', [InviteController::class, 'invitedRegistration']);

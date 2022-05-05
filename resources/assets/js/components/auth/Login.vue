@@ -116,6 +116,12 @@
                     {{ trans("lang.forgot_password") }}
                   </a>
                 </div>
+                <div class="form-group col-12">
+                  <a href="#" @click="toRregister" class="bluish-text">
+                    <i class="fa fa-lock" />
+                    {{ trans("lang.register") }}
+                  </a>
+                </div>
               </div>
             </form>
           </div>
@@ -167,6 +173,10 @@ export default {
     forgetPassword() {
       let instance = this;
       instance.redirect("/password/reset");
+    },
+    toRregister(){
+      let instance = this;
+      instance.redirect("register");
     },
     loginPostSucces(response) {
       let instance = this;

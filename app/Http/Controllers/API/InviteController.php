@@ -63,7 +63,7 @@ class InviteController extends Controller
                 $text = $content->default_content;
             }
 
-            $path = Request::root();
+            $path = \Request::root();
             $link = $path . '/accept/' . $token;
 
             $appName = Setting::getFirst('setting_value', 'setting_name', 'email_from_name')->setting_value;

@@ -11,10 +11,12 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use App\Http\Controllers\Auth\ValidateRequests;
 
 class RegisterController extends Controller
 {
     use RegistersUsers;
+    // use ValidateRequests;
 
     protected $redirectTo = '/dashboard';
 
@@ -66,7 +68,23 @@ class RegisterController extends Controller
         return view('auth/register',
             [
                 'email' => $invitedUser->email,
-                'token' => $token
+                'token' => $token,
+                
+            ]
+        );
+    }
+
+    public function registerForm()
+    {
+        $fields = "";//['email', 'invited_as'];
+        $invitedUser = "";//Invite::getFirst($fields, 'token', $token);
+        $token = "";
+        return view('auth/register',
+            [
+                'email' => $invitedUser,
+                
+                'token' => $token,
+                
             ]
         );
     }

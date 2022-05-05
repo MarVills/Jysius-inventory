@@ -20,6 +20,7 @@ return array(
     "submit" => "Submit",
     "save" => "Save",
     "add" => "Add",
+    "invite" => "Invite",
     "edit" => "Edit",
     "confirm" => "Confirm",
     "cancel" => "Cancel",
