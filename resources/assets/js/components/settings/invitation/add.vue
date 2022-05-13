@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-10">
                     <h5 class="m-0" v-if="id">{{ trans('lang.change_user_role') }}</h5>
-                    <h5 class="m-0" v-else>{{ trans('lang.invite_user') }}</h5>
+                    <h5 class="m-0" v-else>{{ trans('lang.add_user') }}</h5>
                 </div>
 
                 <div class="col-2 text-right">
@@ -19,6 +19,40 @@
             <pre-loader v-if="!hidePreLoader" class="small-loader-container"></pre-loader>
 
             <form class="form-row" v-else>
+                 <div class="form-group col-md-12" v-if="!id">
+                    <label>{{ trans('lang.first_name') }}</label>
+                    <input
+                        id="first-name"
+                        v-validate="'required'"
+                        name="first name"
+                        class="form-control"
+                        type="text"
+                        v-model="firstName"
+                    />
+                    <div class="heightError" v-if="submitted && errors.has('first name')">
+                        <small
+                            class="text-danger"
+                            v-show="errors.has('first name')"
+                        >{{ errors.first('first name') }}</small>
+                    </div>
+                </div>
+                <div class="form-group col-md-12" v-if="!id">
+                    <label>{{ trans('lang.last_name') }}</label>
+                    <input
+                        id="last-name"
+                        v-validate="'required'"
+                        name="last name"
+                        class="form-control"
+                        type="text"
+                        v-model="lastName"
+                    />
+                    <div class="heightError" v-if="submitted && errors.has('last name')">
+                        <small
+                            class="text-danger"
+                            v-show="errors.has('last name')"
+                        >{{ errors.first('last name') }}</small>
+                    </div>
+                </div>
                 <div class="form-group col-md-12" v-if="!id">
                     <label for="invitation-email">{{ trans('lang.login_email') }}</label>
                     <input
@@ -52,7 +86,7 @@
                         class="custom-select"
                     >
                         <option value disabled selected>{{ trans('lang.choose_one') }}</option>
-                        <option v-for="role in roles"  :key="role" :value="role.id">{{ role.title }}</option>
+                        <option v-for="role in roles" :key="role" :value="role.id">{{ role.title }}</option>
                     </select>
                     <div class="heightError">
                         <small
@@ -83,7 +117,7 @@
                         class="btn app-color mobile-btn"
                         type="submit"
                         @click.prevent="inviteUser()"
-                    >{{ id ? trans("lang.save") : trans("lang.invite_button") }}
+                    >{{ id ? trans("lang.save") : trans("lang.add_button") }}
                     </button>
                     <button
                         class="btn cancel-btn mobile-btn"

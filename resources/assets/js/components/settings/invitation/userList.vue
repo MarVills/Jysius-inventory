@@ -12,6 +12,12 @@
                         data-target="#user-invite-modal"
                         @click.prevent="addEditAction('')"
                     >{{ trans('lang.invite') }}</button>
+                    <button v-if="permission_key == 'manage'"
+                        class="btn btn-primary app-color"
+                        data-toggle="modal"
+                        data-target="#user-add-modal"
+                        @click.prevent="addEditAction('')"
+                    >{{ trans('lang.add') }}</button>
                 </div>
             </div>
         </div>
@@ -38,6 +44,23 @@
                     :id="selectedItemId"
                     :modalID="modalID"
                 ></invite-user>
+            </div>
+        </div>
+        <!-- ------------------------------- -->
+        <div
+            class="modal fade"
+            id="user-add-modal"
+            tabindex="-1"
+            role="dialog"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog modal-dialog-centered short-modal-dialog" role="document">
+                <add-user
+                    class="modal-content"
+                    v-if="isActive"
+                    :id="selectedItemId"
+                    :modalID="modalID"
+                ></add-user>
             </div>
         </div>
 
@@ -117,6 +140,55 @@ export default {
             confirmModalID: "#confirm-admin-enable-disable"
         };
     },
+    // data2() {
+    //     return {
+    //         tabName: "users",
+    //         routeName: "settings",
+    //         tableOptions: {
+    //             tableName: "users",
+    //             columns: [
+    //                 {
+    //                     title: "lang.name",
+    //                     key: "full_name",
+    //                     type: "clickable_link",
+    //                     source: "user",
+    //                     uniquefield: "id",
+    //                     sortable: true
+    //                 },
+    //                 {
+    //                     title: "lang.emails",
+    //                     key: "email",
+    //                     type: "text",
+    //                     sortable: true
+    //                 },
+    //                 {
+    //                     title: "lang.role",
+    //                     key: "title",
+    //                     type: "text",
+    //                     sortable: true
+    //                 },
+    //                 (
+    //                     this.permission_key === 'manage' ?
+    //                     {
+    //                         title: "lang.action",
+    //                         type: "component",
+    //                         key: "action",
+    //                         componentName: "userlist-action-component",
+    //                         modifier: function(value) {
+    //                             return !value;
+    //                         }
+    //                     } : {}
+    //                 )
+    //             ],
+    //             source: "/users-list",
+    //             search: true,
+    //             right_align: "action"
+    //         },
+
+    //         modalID: "#user-add-modal",
+    //         confirmModalID: "#confirm-admin-enable-disable"
+    //     };
+    // },
     mounted() {
         let instance = this;
 

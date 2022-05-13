@@ -12,7 +12,7 @@ return array(
     */
 
     //home page
-    "welcome_to_gp" => "Welcome to Gain POS",
+    "welcome_to_gp" => "Welcome to Jysius POS",
 
     // Buttons
     "clear" => "Clear",
@@ -21,6 +21,7 @@ return array(
     "save" => "Save",
     "add" => "Add",
     "invite" => "Invite",
+    "add" => "Add",
     "edit" => "Edit",
     "confirm" => "Confirm",
     "cancel" => "Cancel",
@@ -411,6 +412,8 @@ return array(
     "hold_order_list" => "Hold Order List",
 
     // User list
+    "add_user" => "Add User",
+    "add_button" => "Add",
     "user_list" => "User list",
     "invite_user" => "Invite User",
     "invite_button" => "Invite",
