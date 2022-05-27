@@ -116,12 +116,12 @@
                     {{ trans("lang.forgot_password") }}
                   </a>
                 </div>
-                <div class="form-group col-12">
+                <!-- <div class="form-group col-12">
                   <a href="#" @click="toRregister" class="bluish-text">
                     <i class="fa fa-lock" />
                     {{ trans("lang.register") }}
                   </a>
-                </div>
+                </div> -->
               </div>
             </form>
           </div>

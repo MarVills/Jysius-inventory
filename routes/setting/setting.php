@@ -70,6 +70,11 @@ Route::post('/invite', [InviteController::class, 'process'])
     ->middleware('permissions:can_manage_users');
 Route::get('/all-role-id', [InviteController::class, 'getRoleId']);
 
+// Add user Route
+Route::post('/add', [AddUserController::class, 'process'])
+    ->middleware('permissions:can_manage_users');
+Route::get('/all-role-id', [AddUserController::class, 'getRoleId']);
+
 // Role Route
 Route::post('roles-list', [RoleController::class, 'getRolesList']);
 Route::get('/role-title', [RoleController::class, 'allData']);

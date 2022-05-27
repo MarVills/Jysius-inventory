@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-10">
                     <h4 class="m-0" v-if="id">{{ trans('lang.edit_branch') }}</h4>
-                    <h4 class="m-0" v-else="id">{{ trans('lang.add_branch') }}</h4>
+                    <h4 class="m-0" v-else>{{ trans('lang.add_branch') }}</h4>
                 </div>
                 <div class="col-2 text-right">
                     <button
@@ -75,7 +75,7 @@
                         class="custom-select"
                     >
                         <option value disabled selected>{{ trans('lang.choose_one') }}</option>
-                        <option :value="user.id" v-for="user in users">{{ user.branch_manager }}</option>
+                        <option :value="user.id" v-for="user in users" :key="user">{{ user.branch_manager }}</option>
                     </select>
                     <div class="heightError">
                         <small
@@ -96,7 +96,7 @@
                         <option value disabled selected>{{ trans('lang.choose_one') }}</option>
                         <option value="no-tax">{{ trans('lang.no_tax') }}</option>
                         <option value="default-tax">{{ trans('lang.default_tax') }}</option>
-                        <option v-for="tax in allTax" :value="tax.id">{{ tax.name }}</option>
+                        <option v-for="tax in allTax" :key="tax" :value="tax.id">{{ tax.name }}</option>
                     </select>
                     <div class="heightError">
                         <small

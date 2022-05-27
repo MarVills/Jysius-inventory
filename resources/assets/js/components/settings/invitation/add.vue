@@ -19,6 +19,7 @@
             <pre-loader v-if="!hidePreLoader" class="small-loader-container"></pre-loader>
 
             <form class="form-row" v-else>
+                <!-- First name -->
                  <div class="form-group col-md-12" v-if="!id">
                     <label>{{ trans('lang.first_name') }}</label>
                     <input
@@ -28,6 +29,7 @@
                         class="form-control"
                         type="text"
                         v-model="firstName"
+                        :placeholder="trans('lang.enter_first_name')"
                     />
                     <div class="heightError" v-if="submitted && errors.has('first name')">
                         <small
@@ -36,6 +38,8 @@
                         >{{ errors.first('first name') }}</small>
                     </div>
                 </div>
+                <!-- First name -->
+                <!-- Last name -->
                 <div class="form-group col-md-12" v-if="!id">
                     <label>{{ trans('lang.last_name') }}</label>
                     <input
@@ -45,6 +49,7 @@
                         class="form-control"
                         type="text"
                         v-model="lastName"
+                        :placeholder="trans('lang.enter_last_name')"
                     />
                     <div class="heightError" v-if="submitted && errors.has('last name')">
                         <small
@@ -53,15 +58,18 @@
                         >{{ errors.first('last name') }}</small>
                     </div>
                 </div>
+                <!-- Last name -->
+                <!-- Email -->
                 <div class="form-group col-md-12" v-if="!id">
                     <label for="invitation-email">{{ trans('lang.login_email') }}</label>
                     <input
-                        id="invitation-email"
+                        id="email"
                         v-validate="'required'"
                         name="email"
                         class="form-control"
                         type="email"
                         v-model="email"
+                        :placeholder="trans('lang.enter_email')"
                         :class="{ 'is-invalid': submitted && errors.has('email') }"
                     />
                     <div class="heightError" v-if="submitted && errors.has('email')">
@@ -75,6 +83,32 @@
                     <label>{{ trans('lang.name') }}</label>
                     <h6 class="m-0">{{ name }}</h6>
                 </div>
+                <!-- Email -->
+                <!-- Password -->
+                <div class="form-group col-12">
+                  <label for="password">{{
+                    trans("lang.login_password")
+                  }}</label>
+                  <input
+                    id="password"
+                    v-validate="'required'"
+                    ref="password"
+                    v-model="password"
+                    name="password"
+                    type="password"
+                    class="form-control"
+                    :placeholder="trans('lang.enter_password')"
+                    :class="{
+                      'is-invalid': submitted && errors.has('password'),
+                    }"
+                  />
+                  <div class="heightError">
+                    <small class="text-danger" v-show="errors.has('password')">
+                      {{ errors.first("password") }}
+                    </small>
+                  </div>
+                </div>
+              <!-- Password -->
                 <div class="form-group maergin-top col-md-12">
                     <label for="roles">{{ trans('lang.role') }}</label>
                     <select
@@ -140,8 +174,11 @@ export default {
 
     data() {
         return {
+            firstName: "",
+            lastName: "",
             email: "",
-            inviteAs: "",
+            password: "",
+            // inviteAs: "",
             branchPermission: [],
             roles: [],
             branches: [],

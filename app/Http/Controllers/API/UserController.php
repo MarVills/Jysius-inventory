@@ -10,8 +10,10 @@ use App\Models\CustomUser;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Str;
-use Validator, Hash, Mail;
+use Hash;
 use App\Libraries\searchHelper;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
