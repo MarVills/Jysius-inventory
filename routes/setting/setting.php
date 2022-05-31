@@ -71,9 +71,9 @@ Route::post('/invite', [InviteController::class, 'process'])
 Route::get('/all-role-id', [InviteController::class, 'getRoleId']);
 
 // Add user Route
-Route::post('/add', [AddUserController::class, 'process'])
+Route::post('/add', [AddUserController::class, 'addUser'])
     ->middleware('permissions:can_manage_users');
-Route::get('/all-role-id', [AddUserController::class, 'getRoleId']);
+// Route::get('/all-role-id', [AddUserController::class, 'getRoleId']);
 
 // Role Route
 Route::post('roles-list', [RoleController::class, 'getRolesList']);

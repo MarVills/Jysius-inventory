@@ -19,22 +19,22 @@
     "laravel-mix": "^2.1.14",
     "lodash": "^4.17.15",
     "popper.js": "^1.16.0",
-    "vue": "^2.6.10"
+    "vue": "^2.6.14"
   },
   "dependencies": {
-    "@popperjs/core": "^2.9.1",
+    "@popperjs/core": "^2.11.5",
     "ajv": "^6.10.2",
     "chart.js": "^2.9.2",
     "date-fns": "^1.30.1",
     "fecha": "^3.0.3",
     "img-loader": "^3.0.1",
-    "moment": "^2.24.0",
+    "moment": "^2.29.3",
     "number-currency-format": "^1.0.10",
     "print-js": "^1.6.0",
-    "print-this": "^1.15.1",
+    "print-this": "^1.16.0",
     "vee-validate": "^2.2.15",
     "vue-chartjs": "^3.5.0",
-    "vue-cookies": "^1.5.13",
+    "vue-cookies": "^1.8.1",
     "vue-js-popover": "^1.1.8",
     "vue-moment": "^3.2.0",
     "vue-shortkey": "^3.1.7",
@@ -42,7 +42,7 @@
     "vue-timeselector": "^1.0.0",
     "vue-toasted": "^1.1.27",
     "vuejs-datepicker": "^1.6.2",
-    "vuelidate": "^0.7.4",
+    "vuelidate": "^0.7.7",
     "xlsx": "^0.14.5"
   }
 }

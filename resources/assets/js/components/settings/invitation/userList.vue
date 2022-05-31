@@ -140,55 +140,6 @@ export default {
             confirmModalID: "#confirm-admin-enable-disable"
         };
     },
-    // data2() {
-    //     return {
-    //         tabName: "users",
-    //         routeName: "settings",
-    //         tableOptions: {
-    //             tableName: "users",
-    //             columns: [
-    //                 {
-    //                     title: "lang.name",
-    //                     key: "full_name",
-    //                     type: "clickable_link",
-    //                     source: "user",
-    //                     uniquefield: "id",
-    //                     sortable: true
-    //                 },
-    //                 {
-    //                     title: "lang.emails",
-    //                     key: "email",
-    //                     type: "text",
-    //                     sortable: true
-    //                 },
-    //                 {
-    //                     title: "lang.role",
-    //                     key: "title",
-    //                     type: "text",
-    //                     sortable: true
-    //                 },
-    //                 (
-    //                     this.permission_key === 'manage' ?
-    //                     {
-    //                         title: "lang.action",
-    //                         type: "component",
-    //                         key: "action",
-    //                         componentName: "userlist-action-component",
-    //                         modifier: function(value) {
-    //                             return !value;
-    //                         }
-    //                     } : {}
-    //                 )
-    //             ],
-    //             source: "/users-list",
-    //             search: true,
-    //             right_align: "action"
-    //         },
-
-    //         modalID: "#user-add-modal",
-    //         confirmModalID: "#confirm-admin-enable-disable"
-    //     };
-    // },
     mounted() {
         let instance = this;
 

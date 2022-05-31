@@ -38,7 +38,7 @@
                         >{{ errors.first('first name') }}</small>
                     </div>
                 </div>
-                <!-- First name -->
+               
                 <!-- Last name -->
                 <div class="form-group col-md-12" v-if="!id">
                     <label>{{ trans('lang.last_name') }}</label>
@@ -58,7 +58,7 @@
                         >{{ errors.first('last name') }}</small>
                     </div>
                 </div>
-                <!-- Last name -->
+                
                 <!-- Email -->
                 <div class="form-group col-md-12" v-if="!id">
                     <label for="invitation-email">{{ trans('lang.login_email') }}</label>
@@ -83,7 +83,7 @@
                     <label>{{ trans('lang.name') }}</label>
                     <h6 class="m-0">{{ name }}</h6>
                 </div>
-                <!-- Email -->
+                
                 <!-- Password -->
                 <div class="form-group col-12">
                   <label for="password">{{
@@ -108,16 +108,17 @@
                     </small>
                   </div>
                 </div>
-              <!-- Password -->
+              
                 <div class="form-group maergin-top col-md-12">
                     <label for="roles">{{ trans('lang.role') }}</label>
                     <select
-                        v-model="inviteAs"
+                        v-model="addAs"
                         v-validate="'required'"
-                        name="inviteAs"
+                        name="addAs"
                         data-vv-as="role"
                         id="roles"
                         class="custom-select"
+                        :placeholder="trans('lang.choose_one')"
                     >
                         <option value disabled selected>{{ trans('lang.choose_one') }}</option>
                         <option v-for="role in roles" :key="role" :value="role.id">{{ role.title }}</option>
@@ -126,8 +127,8 @@
                         <small
                             class="text-danger"
                             v-show="errors.has('inviteAs')"
-                        >{{ errors.first('inviteAs') }}</small>
-                    </div>
+                        >{{ errors.first('addAs') }}</small>
+                    </div> 
                 </div>
 
                 <div v-if="branches.length > 1 || id" class="form-group margin-top col-md-12">
@@ -150,7 +151,7 @@
                     <button
                         class="btn app-color mobile-btn"
                         type="submit"
-                        @click.prevent="inviteUser()"
+                        @click.prevent="addUser()"
                     >{{ id ? trans("lang.save") : trans("lang.add_button") }}
                     </button>
                     <button
@@ -178,7 +179,7 @@ export default {
             lastName: "",
             email: "",
             password: "",
-            // inviteAs: "",
+            addAs: "",
             branchPermission: [],
             roles: [],
             branches: [],
@@ -196,14 +197,14 @@ export default {
     },
 
     methods: {
-        inviteUser() {
+        addUser() {
             let instance = this;
             this.submitted = true;
             this.$validator.validateAll().then(result => {
                 if (result) {
                     this.inputFields = {
                         email: this.email,
-                        inviteAs: this.inviteAs
+                        addAs: this.addAs,
                     };
                     if (this.id) {
                         this.inputFields = {
@@ -225,7 +226,7 @@ export default {
                             invited_as: this.inviteAs,
                             branchID: this.branchPermission
                         };
-                        this.postDataMethod("/invite", this.inputFields);
+                        this.postDataMethod("/add", this.inputFields);
                     }
                 }
             });
@@ -244,6 +245,7 @@ export default {
                 "/all-role-id",
                 function (response) {
                     instance.roles = response.data;
+                    console.log("Roles : "+instance.roles);
                     instance.setPreLoader(true);
                 },
                 function () {
@@ -279,7 +281,7 @@ export default {
                         response.data.rowUser.first_name +
                         " " +
                         response.data.rowUser.last_name;
-                    instance.inviteAs = response.data.rowUser.role_id;
+                    instance.addAs = response.data.rowUser.role_id;
                     instance.branchPermission = response.data.branchId;
                     instance.setPreLoader(true);
                 },

@@ -41,6 +41,7 @@
                     <label>{{ trans('lang.name') }}</label>
                     <h6 class="m-0">{{ name }}</h6>
                 </div>
+                
                 <div class="form-group maergin-top col-md-12">
                     <label for="roles">{{ trans('lang.role') }}</label>
                     <select
@@ -99,7 +100,7 @@
 
 <script>
 import axiosGetPost from "../../../helper/axiosGetPostCommon";
-
+//
 export default {
     props: ["id", "modalID"],
     extends: axiosGetPost,
