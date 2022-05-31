@@ -229,7 +229,7 @@ export default {
                             added_as: this.addAs,
                             branchID: this.branchPermission
                         };
-                        this.postDataMethod("/add", this.inputFields);
+                        this.postDataMethod("/addUser", this.inputFields);
                     }
                 }
             });

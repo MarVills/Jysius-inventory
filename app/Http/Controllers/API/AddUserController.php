@@ -14,6 +14,6 @@ class AddUserController extends Controller
     }
 
     public function addUser(){
-        dd("something");
+        return dd("something");
     }
 }

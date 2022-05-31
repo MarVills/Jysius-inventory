@@ -17,6 +17,7 @@ use App\Http\Controllers\API\SmsTemplateController;
 use App\Http\Controllers\API\TaxController;
 use App\Http\Controllers\API\UpdateController;
 use App\Http\Controllers\API\UserController;
+use App\Http\Controllers\API\AddUserController;
 use Illuminate\Support\Facades\Route;
 
 Route::post('template-list', [EmailTemplateController::class, 'index']);
@@ -71,8 +72,9 @@ Route::post('/invite', [InviteController::class, 'process'])
 Route::get('/all-role-id', [InviteController::class, 'getRoleId']);
 
 // Add user Route
-Route::post('/add', [AddUserController::class, 'addUser'])
-    ->middleware('permissions:can_manage_users');
+// Route::get('/addUser', [AddUserController::class, 'addUser']);
+Route::post('/addUser', [AddUserController::class, 'addUser']);
+    
 // Route::get('/all-role-id', [AddUserController::class, 'getRoleId']);
 
 // Role Route

@@ -7,6 +7,7 @@ use App\Http\Controllers\API\ProductCategoriesController;
 use App\Http\Controllers\API\ProductGroupsController;
 use App\Http\Controllers\API\ProductsController;
 use App\Http\Controllers\API\ProductUnitsController;
+use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'products', 'as' => 'products'], function () {
     Route::get('products', [ProductApiController::class, 'index']);

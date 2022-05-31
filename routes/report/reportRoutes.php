@@ -2,6 +2,7 @@
 //
 use App\Http\Controllers\API\RegisterLogController;
 use App\Http\Controllers\API\ReportController;
+use Illuminate\Support\Facades\Route;
 
 Route::post('customer-purchase-report/{id}', [ReportController::class, 'customerPurchaseReport']);
 Route::get('reports/ordersDetails/{id}', [ReportController::class, 'getOrdersDetails']);
