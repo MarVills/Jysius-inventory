@@ -53,7 +53,7 @@
                         class="custom-select"
                     >
                         <option value disabled selected>{{ trans('lang.choose_one') }}</option>
-                        <option v-for="role in roles"  :key="role" :value="role.id">{{ role.title }}</option>
+                        <option v-for="role in roles"  :key="role.name" :value="role.id">{{ role.title }}</option>
                     </select>
                     <div class="heightError">
                         <small
@@ -66,7 +66,7 @@
                 <div v-if="branches.length > 1 || id" class="form-group margin-top col-md-12">
                     <label>{{ trans('lang.branch') }}</label>
 
-                    <div v-for="branch in branches" :key="branch" class="custom-control custom-checkbox">
+                    <div v-for="branch in branches" :key="branch.name" class="custom-control custom-checkbox">
                         <input
                             type="checkbox"
                             class="custom-control-input"

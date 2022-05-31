@@ -116,17 +116,17 @@
                         v-validate="'required'"
                         name="addAs"
                         data-vv-as="role"
-                        id="roles"
+                        id="add-roles"
                         class="custom-select"
                         :placeholder="trans('lang.choose_one')"
                     >
                         <option value disabled selected>{{ trans('lang.choose_one') }}</option>
-                        <option v-for="role in roles" :key="role" :value="role.id">{{ role.title }}</option>
+                        <option v-for="role in roles" :key="role.name" :value="role.id">{{ role.title }}</option>
                     </select>
                     <div class="heightError">
                         <small
                             class="text-danger"
-                            v-show="errors.has('inviteAs')"
+                            v-show="errors.has('addAs')"
                         >{{ errors.first('addAs') }}</small>
                     </div> 
                 </div>
@@ -134,7 +134,7 @@
                 <div v-if="branches.length > 1 || id" class="form-group margin-top col-md-12">
                     <label>{{ trans('lang.branch') }}</label>
 
-                    <div v-for="branch in branches" :key="branch" class="custom-control custom-checkbox">
+                    <div v-for="branch in branches" :key="branch.name" class="custom-control custom-checkbox">
                         <input
                             type="checkbox"
                             class="custom-control-input"
@@ -203,12 +203,15 @@ export default {
             this.$validator.validateAll().then(result => {
                 if (result) {
                     this.inputFields = {
+                        firstName: this.firstName,
+                        lastName: this.lastName,
                         email: this.email,
+                        password: this.password,
                         addAs: this.addAs,
                     };
                     if (this.id) {
                         this.inputFields = {
-                            role_id: this.inviteAs,
+                            role_id: this.addAs,
                             branchID: _.compact(this.branchPermission)
                         };
                         this.postDataMethod(
@@ -223,7 +226,7 @@ export default {
                         }
                         this.inputFields = {
                             email: this.email,
-                            invited_as: this.inviteAs,
+                            added_as: this.addAs,
                             branchID: this.branchPermission
                         };
                         this.postDataMethod("/add", this.inputFields);
