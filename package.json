@@ -43,6 +43,7 @@
     "vue-toasted": "^1.1.27",
     "vuejs-datepicker": "^1.6.2",
     "vuelidate": "^0.7.7",
+    "vue-template-compiler": "^2.6.14",
     "xlsx": "^0.14.5"
   }
 }

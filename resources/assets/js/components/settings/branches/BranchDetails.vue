@@ -75,7 +75,7 @@
                         class="custom-select"
                     >
                         <option value disabled selected>{{ trans('lang.choose_one') }}</option>
-                        <option :value="user.id" v-for="user in users" :key="user">{{ user.branch_manager }}</option>
+                        <option :value="user.id" v-for="user in users" :key="user.name">{{ user.branch_manager }}</option>
                     </select>
                     <div class="heightError">
                         <small
@@ -96,7 +96,7 @@
                         <option value disabled selected>{{ trans('lang.choose_one') }}</option>
                         <option value="no-tax">{{ trans('lang.no_tax') }}</option>
                         <option value="default-tax">{{ trans('lang.default_tax') }}</option>
-                        <option v-for="tax in allTax" :key="tax" :value="tax.id">{{ tax.name }}</option>
+                        <option v-for="tax in allTax" :key="tax.name" :value="tax.id">{{ tax.name }}</option>
                     </select>
                     <div class="heightError">
                         <small
