@@ -15,10 +15,10 @@ class AddUserController extends Controller
         return Role::allData();
     }
 
-    public function addUser(){
-        return dd("something");
-    }
-    public function store(Request $request)
+    // public function addUser(){
+    //     return dd("something");
+    // }
+    public function addUser(Request $request)
     {
         $this->validate($request, [
             // 'name' => 'required',
