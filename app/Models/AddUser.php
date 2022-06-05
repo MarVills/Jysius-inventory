@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class AddUser extends Model
 {
-    // use HasFactory;
-    protected $fillable=['first_name','last_name','email','password','invited_branch','token'];
+    use HasFactory;
+    protected $table = "users";
+    protected $fillable=['first_name','last_name','email','password',];
 }

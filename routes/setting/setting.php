@@ -73,7 +73,7 @@ Route::get('/all-role-id', [InviteController::class, 'getRoleId']);
 
 // Add user Route
 // Route::get('/addUser', [AddUserController::class, 'addUser']);
-Route::post('/addUser', [AddUserController::class, 'addUser']);
+Route::post('/add-user', [AddUserController::class, 'addUser']);
     
 // Route::get('/all-role-id', [AddUserController::class, 'getRoleId']);
 

@@ -31,13 +31,13 @@ class CreateUsersTable extends Migration
             $table->string('user_type')->default(null);
             $table->tinyInteger('tax_excluded')->default(1);
             $table->tinyInteger('enabled')->default(1);
-            $table->integer('created_by');
+            $table->integer('created_by')->nullable();
             $table->string('branch_id')->nullable();
             $table->string('token', 254)->nullable();   // confirm_token', 100
-            $table->rememberToken();
+            $table->rememberToken()->nullable();
             $table->dateTime('notification_check')->nullable();
-            $table->dateTime('created_at');
-            $table->dateTime('updated_at');
+            $table->dateTime('created_at')->nullable();
+            $table->dateTime('updated_at')->nullable();
         });
     }
 

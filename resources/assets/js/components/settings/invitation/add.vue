@@ -209,7 +209,6 @@ export default {
                         password: this.password,
                         addAs: this.addAs,
                     };
-                    if (this.id) {
                         this.inputFields = {
                             role_id: this.addAs,
                             branchID: _.compact(this.branchPermission)
@@ -218,19 +217,28 @@ export default {
                             "/role-assign/" + this.id,
                             this.inputFields
                         );
-                    } else {
-                        if (parseInt(instance.branches.length) === 1) {
-                            instance.branchPermission.push(
-                                instance.branches[0].id
-                            );
-                        }
-                        this.inputFields = {
-                            email: this.email,
-                            added_as: this.addAs,
-                            branchID: this.branchPermission
-                        };
-                        this.postDataMethod("/addUser", this.inputFields);
-                    }
+                    // if (this.id) {
+                    //     this.inputFields = {
+                    //         role_id: this.addAs,
+                    //         branchID: _.compact(this.branchPermission)
+                    //     };
+                    //     this.postDataMethod(
+                    //         "/role-assign/" + this.id,
+                    //         this.inputFields
+                    //     );
+                    // } else {
+                    //     if (parseInt(instance.branches.length) === 1) {
+                    //         instance.branchPermission.push(
+                    //             instance.branches[0].id
+                    //         );
+                    //     }
+                    //     this.inputFields = {
+                    //         email: this.email,
+                    //         added_as: this.addAs,
+                    //         branchID: this.branchPermission
+                    //     };
+                    //     this.postDataMethod("/add-user", this.inputFields);
+                    // }
                 }
             });
             

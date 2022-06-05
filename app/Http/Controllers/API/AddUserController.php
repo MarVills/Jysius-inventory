@@ -55,12 +55,16 @@ class AddUserController extends Controller
         // $data['branch_type'] = $request->branchType;
         // $data['user_id'] = $request->user_id;
         // $data['created_by'] = Auth::user()->id;
-        $message = "============ This Wroked =============";
 
-        $data = $request->all();
-        DB::table('users')->insert($data);
-        // return Response::json(true);
-        return redirect()->route('...')->with('jsAlert', $message);
+
+
+        
+        // $message = "============ This Wroked =============";
+
+        // $data = $request->all();
+        // DB::table('users')->insert($data);
+        // // return Response::json(true);
+        // return redirect()->route('...')->with('jsAlert', $message);
 
         // if ($tax_id == 'no-tax') {
         //     $data['taxable'] = 0;
