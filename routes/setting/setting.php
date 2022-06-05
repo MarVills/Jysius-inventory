@@ -85,7 +85,7 @@ Route::post('/add-role', [RoleController::class, 'store'])
 Route::post('/add-role/{id}', [RoleController::class, 'update'])
     ->middleware('permissions:can_manage_roles');
 Route::get('/role-permissions/{id}', [RoleController::class, 'getRolePermissions']);
-Route::get('/cashRegisterSalesBalance/', [RoleController::class, 'getRoleWithout']);
+Route::get('/cashRegisterSalesBalance', [RoleController::class, 'getRoleWithout']);
 Route::post('/delete-role/{id}', [RoleController::class, 'delete'])
     ->middleware('permissions:can_manage_roles');
 Route::get('roles', [RoleController::class, 'index']);

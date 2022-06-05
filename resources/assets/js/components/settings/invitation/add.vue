@@ -179,11 +179,11 @@ export default {
             lastName: "",
             email: "",
             password: "",
-            addAs: "",
-            branchPermission: [],
+            //addAs: "",
+            //branchPermission: [],
             roles: [],
-            branches: [],
-            name: "",
+            //branches: [],
+            //name: "",
             submitted: false
         };
     },
@@ -233,6 +233,7 @@ export default {
                     }
                 }
             });
+            
         },
         postDataThenFunctionality() {
             $(this.modalID).modal("hide");

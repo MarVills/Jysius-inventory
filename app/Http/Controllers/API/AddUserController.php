@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Role;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Branch;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Response;
 
 class AddUserController extends Controller
 {
@@ -49,10 +51,16 @@ class AddUserController extends Controller
         $data['last_name'] = $request->lastName;
         $data['email'] = $request->email;
         $data['password'] = $request->password;
-        $data['role'] = $request->role;
+        $data['user_type'] = $request->role;
         // $data['branch_type'] = $request->branchType;
         // $data['user_id'] = $request->user_id;
         // $data['created_by'] = Auth::user()->id;
+        $message = "============ This Wroked =============";
+
+        $data = $request->all();
+        DB::table('users')->insert($data);
+        // return Response::json(true);
+        return redirect()->route('...')->with('jsAlert', $message);
 
         // if ($tax_id == 'no-tax') {
         //     $data['taxable'] = 0;
