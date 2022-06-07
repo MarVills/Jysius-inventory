@@ -143,7 +143,10 @@
                         <label class="custom-control-label" :for="branch.id">{{ branch.name }}</label>
                         <br/>
                     </div>
-                </div> -->
+                </div> 
+                @submmit.prevent="addUser()"
+                
+                -->
 
                 <div class="col-12">
                     <button
@@ -195,14 +198,13 @@ export default {
     methods: {
         addUser() {
             // alert('Data saved successfully');
-            // console.log("adduser i scalled", this.user_data);
+            // console.log("adduser is called", this.user_data);
 
-            axios.post("add-user", this.eployee).then(
-                response => {
-
-                }
+            axios.post("/add-user", this.user_data).then(
+                // response => {}
+                console.log("This works !!!!!!!!!!!!!!!!")
             ).catch(error => {
-                console.log("Error on adding user.", response);
+                console.log("Error on adding user.", error);
             })
 
 
@@ -284,7 +286,7 @@ export default {
                 "/all-role-id",
                 function (response) {
                     instance.roles = response.data;
-                    console.log("Roles : "+instance.roles);
+                    // console.log("Roles : "+instance.roles);
                     instance.setPreLoader(true);
                 },
                 function () {

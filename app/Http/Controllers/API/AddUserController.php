@@ -33,11 +33,11 @@ class AddUserController extends Controller
         //     'email' => 'required | email ',
         //     'password' => 'required |min:6',
         //     'role_id' => 'required',
-            
         // ]);
 
         dd($request->all());
         
+
         // $tax_id = $request->tax_id;
         // $data = array();
         // $data['first_name'] = $request->firstName;
