@@ -28,10 +28,10 @@
                         name="first name"
                         class="form-control"
                         type="text"
-                        v-model="firstName"
+                        v-model="user_data.firstName"
                         :placeholder="trans('lang.enter_first_name')"
                     />
-                    <div class="heightError" v-if="submitted && errors.has('first name')">
+                    <div class="heightError">
                         <small
                             class="text-danger"
                             v-show="errors.has('first name')"
@@ -48,10 +48,10 @@
                         name="last name"
                         class="form-control"
                         type="text"
-                        v-model="lastName"
+                        v-model="user_data.lastName"
                         :placeholder="trans('lang.enter_last_name')"
                     />
-                    <div class="heightError" v-if="submitted && errors.has('last name')">
+                    <div class="heightError" >
                         <small
                             class="text-danger"
                             v-show="errors.has('last name')"
@@ -68,11 +68,11 @@
                         name="email"
                         class="form-control"
                         type="email"
-                        v-model="email"
+                        v-model="user_data.email"
                         :placeholder="trans('lang.enter_email')"
-                        :class="{ 'is-invalid': submitted && errors.has('email') }"
+                        
                     />
-                    <div class="heightError" v-if="submitted && errors.has('email')">
+                    <div class="heightError" >
                         <small
                             class="text-danger"
                             v-show="errors.has('email')"
@@ -93,14 +93,12 @@
                     id="password"
                     v-validate="'required'"
                     ref="password"
-                    v-model="password"
+                    v-model="user_data.password"
                     name="password"
                     type="password"
                     class="form-control"
                     :placeholder="trans('lang.enter_password')"
-                    :class="{
-                      'is-invalid': submitted && errors.has('password'),
-                    }"
+                  
                   />
                   <div class="heightError">
                     <small class="text-danger" v-show="errors.has('password')">
@@ -112,7 +110,7 @@
                 <div class="form-group maergin-top col-md-12">
                     <label for="roles">{{ trans('lang.role') }}</label>
                     <select
-                        v-model="addAs"
+                        v-model="user_data.role_id"
                         v-validate="'required'"
                         name="addAs"
                         data-vv-as="role"
@@ -175,16 +173,14 @@ export default {
 
     data() {
         return {
-            firstName: "",
-            lastName: "",
-            email: "",
-            password: "",
-            //addAs: "",
-            //branchPermission: [],
-            roles: [],
-            //branches: [],
-            //name: "",
-            submitted: false
+           "user_data": {
+                'firstName': "",
+                'lastName': "",
+                'email': "",
+                'password': "",
+                'role_id': "",
+           }
+            
         };
     },
 
@@ -198,49 +194,80 @@ export default {
 
     methods: {
         addUser() {
-            let instance = this;
-            this.submitted = true;
-            this.$validator.validateAll().then(result => {
-                if (result) {
-                    this.inputFields = {
-                        firstName: this.firstName,
-                        lastName: this.lastName,
-                        email: this.email,
-                        password: this.password,
-                        addAs: this.addAs,
-                    };
-                        this.inputFields = {
-                            role_id: this.addAs,
-                            branchID: _.compact(this.branchPermission)
-                        };
-                        this.postDataMethod(
-                            "/role-assign/" + this.id,
-                            this.inputFields
-                        );
-                    // if (this.id) {
-                    //     this.inputFields = {
-                    //         role_id: this.addAs,
-                    //         branchID: _.compact(this.branchPermission)
-                    //     };
-                    //     this.postDataMethod(
-                    //         "/role-assign/" + this.id,
-                    //         this.inputFields
-                    //     );
-                    // } else {
-                    //     if (parseInt(instance.branches.length) === 1) {
-                    //         instance.branchPermission.push(
-                    //             instance.branches[0].id
-                    //         );
-                    //     }
-                    //     this.inputFields = {
-                    //         email: this.email,
-                    //         added_as: this.addAs,
-                    //         branchID: this.branchPermission
-                    //     };
-                    //     this.postDataMethod("/add-user", this.inputFields);
-                    // }
+            // alert('Data saved successfully');
+            // console.log("adduser i scalled", this.user_data);
+
+            axios.post("add-user", this.eployee).then(
+                response => {
+
                 }
-            });
+            ).catch(error => {
+                console.log("Error on adding user.", response);
+            })
+
+
+
+
+
+
+            // let instance = this;
+            // this.submitted = true;
+            // this.$validator.validateAll().then(result => {
+            //     if (result) {
+            //         this.inputFields = {
+            //             firstName: this.firstName,
+            //             lastName: this.lastName,
+            //             email: this.email,
+            //             password: this.password,
+            //             role_id: this.role,
+            //         };
+            //         // this.inputFields = {
+            //         //     role_id: this.addAs,
+            //         //     branchID: _.compact(this.branchPermission)
+            //         // };
+            //         // this.postDataMethod(
+            //         //     "/add-user",
+            //         //     this.inputFields
+            //         // );
+
+            //         // axios.post('addUser.php', {
+            //         //         // request: 2,
+            //         //         // name: this.name,
+            //         //         // email:this.email,
+            //         //         // phone:this.phone
+            //         //     firstName: this.firstName,
+            //         //     lastName: this.lastName,
+            //         //     email: this.email,
+            //         //     password: this.password,
+            //         //     role_id: this.addAs,
+            //         //     });
+
+            //         // alert('Data saved successfully ' + JSON.stringify(this.inputFields));
+            //         // if (this.id) {
+            //         //     this.inputFields = {
+            //         //         role_id: this.addAs,
+            //         //         branchID: _.compact(this.branchPermission)
+            //         //     };
+            //         //     this.postDataMethod(
+            //         //         "/role-assign/" + this.id,
+            //         //         this.inputFields
+            //         //     );
+            //         // } else {
+            //         //     if (parseInt(instance.branches.length) === 1) {
+            //         //         instance.branchPermission.push(
+            //         //             instance.branches[0].id
+            //         //         );
+            //         //     }
+            //         //     this.inputFields = {
+            //         //         email: this.email,
+            //         //         added_as: this.addAs,
+            //         //         branchID: this.branchPermission
+            //         //     };
+            //         //     this.postDataMethod("/add-user", this.inputFields);
+            //         // }
+
+            //     }
+            // });
             
         },
         postDataThenFunctionality() {
