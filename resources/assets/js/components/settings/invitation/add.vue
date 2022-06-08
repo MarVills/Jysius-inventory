@@ -18,7 +18,7 @@
         <div class="modal-layout-content">
             <pre-loader v-if="!hidePreLoader" class="small-loader-container"></pre-loader>
 
-            <form class="form-row" v-else>
+            <form v-else class="form-row" @submmit.prevent="addUser()">
                 <!-- First name -->
                  <div class="form-group col-md-12" v-if="!id">
                     <label>{{ trans('lang.first_name') }}</label>
@@ -145,14 +145,14 @@
                     </div>
                 </div> 
                 @submmit.prevent="addUser()"
-                
+                @click.prevent="addUser()"
                 -->
 
                 <div class="col-12">
                     <button
                         class="btn app-color mobile-btn"
                         type="submit"
-                        @click.prevent="addUser()"
+                        
                     >{{ id ? trans("lang.save") : trans("lang.add_button") }}
                     </button>
                     <button
@@ -205,7 +205,7 @@ export default {
                 console.log("This works !!!!!!!!!!!!!!!!")
             ).catch(error => {
                 console.log("Error on adding user.", error);
-            })
+            });
 
 
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+
 use App\Models\Role;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Branch;
@@ -12,10 +13,10 @@ use Illuminate\Support\Facades\Response;
 
 class AddUserController extends Controller
 {
-    public function getRoleId()
-    {
-        return Role::allData();
-    }
+    // public function getRoleId()
+    // {
+    //     return Role::allData();
+    // }
 
     // public function addUser(){
     //     return dd("something");
@@ -35,7 +36,8 @@ class AddUserController extends Controller
         //     'role_id' => 'required',
         // ]);
 
-        dd($request->all());
+        // dd($request->all());
+        dd("Something");
         
 
         // $tax_id = $request->tax_id;
