@@ -129,7 +129,7 @@
                     </div> 
                 </div>
 
-                <div v-if="branches.length > 1 || id" class="form-group margin-top col-md-12">
+                <!-- <div v-if="branches.length > 1 || id" class="form-group margin-top col-md-12">
                     <label>{{ trans('lang.branch') }}</label>
 
                     <div v-for="branch in branches" :key="branch.name" class="custom-control custom-checkbox">
@@ -143,7 +143,7 @@
                         <label class="custom-control-label" :for="branch.id">{{ branch.name }}</label>
                         <br/>
                     </div>
-                </div> 
+                </div>  -->
                 <!-- @submmit.prevent="addUser()"
                 @click.prevent="addUser()" -->
                
@@ -182,8 +182,8 @@ export default {
                 'email': "",
                 'password': "",
                 'roleId': "",
-                'userType': "",
-                'branchPermission': [],
+                // 'userType': "",
+                // 'branchPermission': [],
 
            }
             
@@ -215,12 +215,13 @@ export default {
                 console.log("Error on adding user.", error);
             });
 
-         
             // this.$validator.validateAll().then(result => {
             //     if (result) {
             //         this.inputFields = {
+            //             firstName: this.firstName,
+            //             lastName: this.lastName,
             //             email: this.email,
-            //             inviteAs: this.inviteAs
+            //             password: this.password,
             //         };
             //         if (this.id) {
             //             this.inputFields = {

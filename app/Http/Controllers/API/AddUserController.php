@@ -31,8 +31,8 @@ class AddUserController extends Controller
             'email' => 'required | email ',
             'password' => 'required |min:6',
             'roleId' => 'required',
-            'userType' => '',
-            'branchPermission' => '',
+            // 'userType' => '',
+            // 'branchPermission' => '',
         ]);
 
         $data = array();
@@ -41,8 +41,8 @@ class AddUserController extends Controller
         $data['email'] = $request->email;
         $data['password'] = Hash::make($request->password); 
         $data['role_id'] = $request->roleId;
-        $data['user_type'] = $request->userType;
-        $data['branch_id'] = $request->branchPermission;
+        // $data['user_type'] = $request->userType;
+        // $data['branch_id'] = $request->branchPermission;
 
         // dd($request->all());
 
