@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\AddUser;
+use Illuminate\Support\Facades\Hash;
 
 use App\Models\Role;
 use Illuminate\Support\Facades\Auth;
@@ -24,36 +25,38 @@ class AddUserController extends Controller
     // }
     public function store(Request $request)
     {
-        // $this->validate($request, [
-        //     // 'name' => 'required',
-        //     // 'branchType' => 'required',
-        //     // 'tax_id' => 'required',
-        //     // 'isCashRegisterUser' => 'required',
-        //     // 'isEnableShipment' => 'required',
-        //     'firstName' => 'required',
-        //     'lastName' => 'required',
-        //     'email' => 'required | email ',
-        //     'password' => 'required |min:6',
-        //     'role_id' => 'required',
-        // ]);
+        $this->validate($request, [
+            'firstName' => 'required',
+            'lastName' => 'required',
+            'email' => 'required | email ',
+            'password' => 'required |min:6',
+            'roleId' => 'required',
+            'userType' => '',
+            'branchPermission' => '',
+        ]);
+
+        $data = array();
+        $data['first_name'] = $request->firstName;
+        $data['last_name'] = $request->lastName;
+        $data['email'] = $request->email;
+        $data['password'] = Hash::make($request->password); 
+        $data['role_id'] = $request->roleId;
+        $data['user_type'] = $request->userType;
+        $data['branch_id'] = $request->branchPermission;
 
         // dd($request->all());
 
-        $data = $request->all();
+        // $data = $request->all();
         $response = AddUser::create($data);
       
         return response()->json([
             'status' => 'sucess',
             'data' => $response,
         ], 200);
+        // return view();
+        // return response()->json($response, 200);
 
-        // $tax_id = $request->tax_id;
-        // $data = array();
-        // $data['first_name'] = $request->firstName;
-        // $data['last_name'] = $request->lastName;
-        // $data['email'] = $request->email;
-        // $data['password'] = $request->password;
-        // $data['user_type'] = $request->role_id;
+      
       
     }
 }

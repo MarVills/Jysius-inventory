@@ -110,7 +110,7 @@
                 <div class="form-group maergin-top col-md-12">
                     <label for="roles">{{ trans('lang.role') }}</label>
                     <select
-                        v-model="user_data.role_id"
+                        v-model="user_data.roleId"
                         v-validate="'required'"
                         name="addAs"
                         data-vv-as="role"
@@ -129,7 +129,7 @@
                     </div> 
                 </div>
 
-                <!-- <div v-if="branches.length > 1 || id" class="form-group margin-top col-md-12">
+                <div v-if="branches.length > 1 || id" class="form-group margin-top col-md-12">
                     <label>{{ trans('lang.branch') }}</label>
 
                     <div v-for="branch in branches" :key="branch.name" class="custom-control custom-checkbox">
@@ -137,16 +137,16 @@
                             type="checkbox"
                             class="custom-control-input"
                             :id="branch.id"
-                            v-model="branchPermission"
+                            v-model="user_data.branchPermission"
                             :value="branch.id"
                         />
                         <label class="custom-control-label" :for="branch.id">{{ branch.name }}</label>
                         <br/>
                     </div>
                 </div> 
-                @submmit.prevent="addUser()"
-                @click.prevent="addUser()"
-                -->
+                <!-- @submmit.prevent="addUser()"
+                @click.prevent="addUser()" -->
+               
 
                 <div class="col-12">
                     <button
@@ -181,7 +181,10 @@ export default {
                 'lastName': "",
                 'email': "",
                 'password': "",
-                'role_id': "",
+                'roleId': "",
+                'userType': "",
+                'branchPermission': [],
+
            }
             
         };
@@ -199,75 +202,48 @@ export default {
         addUser() {
             // alert('Data saved successfully');
             // console.log("adduser is called", this.user_data);
+            let instance = this;
+            this.submitted = true;
+            // console.log("data here : ", this.user_data.first_name, this.user_data.last_name)
+            // console.log("Something");
 
             axios.post("/add-user", this.user_data).then(
+                
                 // response => {}
-                console.log("This works !!!!!!!!!!!!!!!!")
+                console.log("This works !!")
             ).catch(error => {
                 console.log("Error on adding user.", error);
             });
 
-
-
-
-
-
-            // let instance = this;
-            // this.submitted = true;
+         
             // this.$validator.validateAll().then(result => {
             //     if (result) {
             //         this.inputFields = {
-            //             firstName: this.firstName,
-            //             lastName: this.lastName,
             //             email: this.email,
-            //             password: this.password,
-            //             role_id: this.role,
+            //             inviteAs: this.inviteAs
             //         };
-            //         // this.inputFields = {
-            //         //     role_id: this.addAs,
-            //         //     branchID: _.compact(this.branchPermission)
-            //         // };
-            //         // this.postDataMethod(
-            //         //     "/add-user",
-            //         //     this.inputFields
-            //         // );
-
-            //         // axios.post('addUser.php', {
-            //         //         // request: 2,
-            //         //         // name: this.name,
-            //         //         // email:this.email,
-            //         //         // phone:this.phone
-            //         //     firstName: this.firstName,
-            //         //     lastName: this.lastName,
-            //         //     email: this.email,
-            //         //     password: this.password,
-            //         //     role_id: this.addAs,
-            //         //     });
-
-            //         // alert('Data saved successfully ' + JSON.stringify(this.inputFields));
-            //         // if (this.id) {
-            //         //     this.inputFields = {
-            //         //         role_id: this.addAs,
-            //         //         branchID: _.compact(this.branchPermission)
-            //         //     };
-            //         //     this.postDataMethod(
-            //         //         "/role-assign/" + this.id,
-            //         //         this.inputFields
-            //         //     );
-            //         // } else {
-            //         //     if (parseInt(instance.branches.length) === 1) {
-            //         //         instance.branchPermission.push(
-            //         //             instance.branches[0].id
-            //         //         );
-            //         //     }
-            //         //     this.inputFields = {
-            //         //         email: this.email,
-            //         //         added_as: this.addAs,
-            //         //         branchID: this.branchPermission
-            //         //     };
-            //         //     this.postDataMethod("/add-user", this.inputFields);
-            //         // }
-
+            //         if (this.id) {
+            //             this.inputFields = {
+            //                 role_id: this.inviteAs,
+            //                 branchID: _.compact(this.branchPermission)
+            //             };
+            //             this.postDataMethod(
+            //                 "/role-assign/" + this.id,
+            //                 this.inputFields
+            //             );
+            //         } else {
+            //             if (parseInt(instance.branches.length) === 1) {
+            //                 instance.branchPermission.push(
+            //                     instance.branches[0].id
+            //                 );
+            //             }
+            //             this.inputFields = {
+            //                 email: this.email,
+            //                 invited_as: this.inviteAs,
+            //                 branchID: this.branchPermission
+            //             };
+            //             this.postDataMethod("/invite", this.inputFields);
+            //         }
             //     }
             // });
             
