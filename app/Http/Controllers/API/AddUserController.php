@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\AddUser;
 
 use App\Models\Role;
 use Illuminate\Support\Facades\Auth;
@@ -37,8 +38,14 @@ class AddUserController extends Controller
         // ]);
 
         // dd($request->all());
-        dd("Something");
-        
+
+        $data = $request->all();
+        $response = AddUser::create($data);
+      
+        return response()->json([
+            'status' => 'sucess',
+            'data' => $response,
+        ], 200);
 
         // $tax_id = $request->tax_id;
         // $data = array();

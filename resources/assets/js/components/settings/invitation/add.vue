@@ -18,7 +18,7 @@
         <div class="modal-layout-content">
             <pre-loader v-if="!hidePreLoader" class="small-loader-container"></pre-loader>
 
-            <form v-else class="form-row" @submmit.prevent="addUser()">
+            <form v-else class="form-row">
                 <!-- First name -->
                  <div class="form-group col-md-12" v-if="!id">
                     <label>{{ trans('lang.first_name') }}</label>
@@ -152,7 +152,7 @@
                     <button
                         class="btn app-color mobile-btn"
                         type="submit"
-                        
+                        @click.prevent="addUser()"
                     >{{ id ? trans("lang.save") : trans("lang.add_button") }}
                     </button>
                     <button
