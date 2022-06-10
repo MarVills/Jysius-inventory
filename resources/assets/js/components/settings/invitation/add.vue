@@ -129,21 +129,22 @@
                     </div> 
                 </div>
 
-                <!-- <div v-if="branches.length > 1 || id" class="form-group margin-top col-md-12">
+                <div v-if="branches.length > 1 || id" class="form-group margin-top col-md-12">
                     <label>{{ trans('lang.branch') }}</label>
 
                     <div v-for="branch in branches" :key="branch.name" class="custom-control custom-checkbox">
                         <input
                             type="checkbox"
                             class="custom-control-input"
-                            :id="branch.id"
+                            :id="branchId+branch.id"
                             v-model="user_data.branchPermission"
                             :value="branch.id"
+                           
                         />
                         <label class="custom-control-label" :for="branch.id">{{ branch.name }}</label>
                         <br/>
                     </div>
-                </div>  -->
+                </div> 
                 <!-- @submmit.prevent="addUser()"
                 @click.prevent="addUser()" -->
                
@@ -176,6 +177,10 @@ export default {
 
     data() {
         return {
+            submitted: false,
+            branchId: "10", 
+            branches : [],
+            branchPermission : [],
            "user_data": {
                 'firstName': "",
                 'lastName': "",
@@ -183,7 +188,7 @@ export default {
                 'password': "",
                 'roleId': "",
                 // 'userType': "",
-                // 'branchPermission': [],
+                'branchPermission': [],
 
            }
             
@@ -206,7 +211,7 @@ export default {
             this.submitted = true;
             // console.log("data here : ", this.user_data.first_name, this.user_data.last_name)
             // console.log("Something");
-
+            console.log("branch: "+ this.user_data.branchPermission)
             axios.post("/add-user", this.user_data).then(
                 
                 // response => {}

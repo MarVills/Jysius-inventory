@@ -32,7 +32,7 @@ class AddUserController extends Controller
             'password' => 'required |min:6',
             'roleId' => 'required',
             // 'userType' => '',
-            // 'branchPermission' => '',
+            'branchPermission' => 'required',
         ]);
 
         $data = array();
@@ -42,7 +42,7 @@ class AddUserController extends Controller
         $data['password'] = Hash::make($request->password); 
         $data['role_id'] = $request->roleId;
         // $data['user_type'] = $request->userType;
-        // $data['branch_id'] = $request->branchPermission;
+        $data['branch_id'] = $request->branchPermission;
 
         // dd($request->all());
 
