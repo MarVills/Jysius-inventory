@@ -132,19 +132,19 @@
                 <div v-if="branches.length > 1 || id" class="form-group margin-top col-md-12">
                     <label>{{ trans('lang.branch') }}</label>
 
-                    <div v-for="branch in branches" :key="branch.name" class="custom-control custom-checkbox">
+                    <div v-for="branch in branches" :key="branch.id" class="custom-control custom-checkbox">
                         <input
                             type="checkbox"
                             class="custom-control-input"
                             :id="branchId+branch.id"
                             v-model="user_data.branchPermission"
                             :value="branch.id"
-                           
+                            style="z-index:10;"
                         />
                         <label class="custom-control-label" :for="branch.id">{{ branch.name }}</label>
                         <br/>
                     </div>
-                </div> 
+                </div>
                 <!-- @submmit.prevent="addUser()"
                 @click.prevent="addUser()" -->
                
@@ -180,7 +180,7 @@ export default {
             submitted: false,
             branchId: "10", 
             branches : [],
-            branchPermission : [],
+            //branchPermission : [],
            "user_data": {
                 'firstName': "",
                 'lastName': "",
@@ -188,7 +188,7 @@ export default {
                 'password': "",
                 'roleId': "",
                 // 'userType': "",
-                'branchPermission': [],
+                'branchPermission': []
 
            }
             
@@ -204,6 +204,7 @@ export default {
     },
 
     methods: {
+      
         addUser() {
             // alert('Data saved successfully');
             // console.log("adduser is called", this.user_data);
@@ -217,7 +218,9 @@ export default {
                 // response => {}
                 console.log("This works !!")
             ).catch(error => {
-                console.log("Error on adding user.", error);
+               
+                console.log("Error on adding user.",  error);
+               
             });
 
             // this.$validator.validateAll().then(result => {

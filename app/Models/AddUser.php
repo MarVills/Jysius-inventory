@@ -14,8 +14,9 @@ class AddUser extends Model
         'last_name',
         'email',
         'password', 
-        "role_id" , 
-        // 'user_type', 
+        'role_id' , 
         'branch_id',
+        // 'user_type', 
+        // 'branch_id',
     ];
 }

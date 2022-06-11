@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\AddUser;
 use Illuminate\Support\Facades\Hash;
-
+use App\User;
 use App\Models\Role;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Branch;
@@ -45,15 +45,19 @@ class AddUserController extends Controller
         $data['branch_id'] = $request->branchPermission;
 
         // dd($request->all());
-
+        $response = "something";
         // $data = $request->all();
         $response = AddUser::create($data);
+
+        // User::query()->truncate();
+        // $response =  DB::table('users')->insert($data);
       
         return response()->json([
-            'status' => 'sucess',
+            'status' => 'success',
             'data' => $response,
         ], 200);
-        // return view();
+
+        // return "something";
         // return response()->json($response, 200);
 
       

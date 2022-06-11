@@ -10,14 +10,19 @@ use App\Models\CustomUser;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Str;
-use Hash;
+use Illuminate\Support\Facades\Hash;
 use App\Libraries\searchHelper;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+// use Illuminate\Validation\Validator;
+// use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Support\Facades\Mail;
+use Laravel\Passport\HasApiTokens;
 
 class UserController extends Controller
 {
     public $successStatus = 200;
+    use HasApiTokens; 
 
     public function login(Request $request)
     {
@@ -30,7 +35,7 @@ class UserController extends Controller
         $validator = Validator::make($credentials, $rules);
 
         if ($validator->fails()) {
-            return response()->json(['success' => false, 'error' => $validator->messages()]);
+            return response()->json(['success' => false, 'error' => $validator->messages]);
         }
 
         $credentials['verified'] = 1;

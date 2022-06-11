@@ -4,8 +4,8 @@ namespace App\Models;
 
 use App\User;
 use Illuminate\Http\Request;
-use DB;
-use Hash;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 
 class CustomUser extends BaseModel
