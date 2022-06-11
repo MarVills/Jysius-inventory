@@ -18,7 +18,7 @@
         <div class="modal-layout-content">
             <pre-loader v-if="!hidePreLoader" class="small-loader-container"></pre-loader>
 
-            <form v-else class="form-row">
+            <form class="form-row" v-else>
                 <!-- First name -->
                  <div class="form-group col-md-12" v-if="!id">
                     <label>{{ trans('lang.first_name') }}</label>
@@ -30,8 +30,9 @@
                         type="text"
                         v-model="user_data.firstName"
                         :placeholder="trans('lang.enter_first_name')"
+                        :class="{ 'is-invalid': submitted && errors.has('email') }"
                     />
-                    <div class="heightError">
+                    <div class="heightError" v-if="submitted && errors.has('email')">
                         <small
                             class="text-danger"
                             v-show="errors.has('first name')"
@@ -107,7 +108,7 @@
                   </div>
                 </div>
               
-                <div class="form-group maergin-top col-md-12">
+                <div class="form-group margin-top col-md-12">
                     <label for="roles">{{ trans('lang.role') }}</label>
                     <select
                         v-model="user_data.roleId"
@@ -154,6 +155,7 @@
                         class="btn app-color mobile-btn"
                         type="submit"
                         @click.prevent="addUser()"
+                        
                     >{{ id ? trans("lang.save") : trans("lang.add_button") }}
                     </button>
                     <button
@@ -187,8 +189,8 @@ export default {
                 'email': "",
                 'password': "",
                 'roleId': "",
+                'branchPermission': [],
                 // 'userType': "",
-                'branchPermission': []
 
            }
             
@@ -204,7 +206,9 @@ export default {
     },
 
     methods: {
-      
+        // close() {
+        //     this.$emit('close');
+        // },
         addUser() {
             // alert('Data saved successfully');
             // console.log("adduser is called", this.user_data);
@@ -212,49 +216,27 @@ export default {
             this.submitted = true;
             // console.log("data here : ", this.user_data.first_name, this.user_data.last_name)
             // console.log("Something");
-            console.log("branch: "+ this.user_data.branchPermission)
-            axios.post("/add-user", this.user_data).then(
+            console.log("branch: "+ this.user_data.branchPermission);
+            // this.postDataMethod("/add-user", this.user_data);
+            // axios.post("/add-user", this.user_data).then(
                 
-                // response => {}
-                console.log("This works !!")
-            ).catch(error => {
+            //     // response => {}
+            //     console.log("This works !!")
+            // ).catch(error => {
                
-                console.log("Error on adding user.",  error);
+            //     console.log("Error on adding user.",  error);
                
-            });
-
-            // this.$validator.validateAll().then(result => {
-            //     if (result) {
-            //         this.inputFields = {
-            //             firstName: this.firstName,
-            //             lastName: this.lastName,
-            //             email: this.email,
-            //             password: this.password,
-            //         };
-            //         if (this.id) {
-            //             this.inputFields = {
-            //                 role_id: this.inviteAs,
-            //                 branchID: _.compact(this.branchPermission)
-            //             };
-            //             this.postDataMethod(
-            //                 "/role-assign/" + this.id,
-            //                 this.inputFields
-            //             );
-            //         } else {
-            //             if (parseInt(instance.branches.length) === 1) {
-            //                 instance.branchPermission.push(
-            //                     instance.branches[0].id
-            //                 );
-            //             }
-            //             this.inputFields = {
-            //                 email: this.email,
-            //                 invited_as: this.inviteAs,
-            //                 branchID: this.branchPermission
-            //             };
-            //             this.postDataMethod("/invite", this.inputFields);
-            //         }
-            //     }
             // });
+
+           
+            this.$validator.validateAll().then(result => {
+                if (result) {
+                        this.postDataMethod("/add-user", this.user_data);
+                        // this.$emit('close');
+                        // $(this.modalID).modal("hide");
+                        // this.isModalVisible = false;
+                    }
+            });
             
         },
         postDataThenFunctionality() {

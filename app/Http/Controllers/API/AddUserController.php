@@ -6,11 +6,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\AddUser;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 use App\User;
 use App\Models\Role;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Branch;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Response;
 
 class AddUserController extends Controller
@@ -32,7 +32,7 @@ class AddUserController extends Controller
             'password' => 'required |min:6',
             'roleId' => 'required',
             // 'userType' => '',
-            'branchPermission' => 'required',
+            //'branchPermission' => 'required',
         ]);
 
         $data = array();
@@ -42,20 +42,20 @@ class AddUserController extends Controller
         $data['password'] = Hash::make($request->password); 
         $data['role_id'] = $request->roleId;
         // $data['user_type'] = $request->userType;
-        $data['branch_id'] = $request->branchPermission;
+        $data['branch_id'] = implode(", ", $request->branchPermission);
 
-        // dd($request->all());
-        $response = "something";
+        //dd($request->all());
+        //$response = "something";
         // $data = $request->all();
         $response = AddUser::create($data);
-
+        return print_r($data);
         // User::query()->truncate();
         // $response =  DB::table('users')->insert($data);
       
-        return response()->json([
-            'status' => 'success',
-            'data' => $response,
-        ], 200);
+        // return response()->json([
+        //     'status' => 'success',
+        //     'data' => $response,
+        // ], 200);
 
         // return "something";
         // return response()->json($response, 200);

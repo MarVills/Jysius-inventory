@@ -17,6 +17,6 @@ class AddUser extends Model
         'role_id' , 
         'branch_id',
         // 'user_type', 
-        // 'branch_id',
+        
     ];
 }

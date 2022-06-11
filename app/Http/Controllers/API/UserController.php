@@ -148,7 +148,8 @@ class UserController extends Controller
             'last_name' => 'required',
             'email' => 'required',
             'gender' => 'required',
-            'role_id' => 'required'
+            'role_id' => 'required',
+            // 'branch_id' => 'required'
         ]);
 
         $first_name = $request->input('first_name');
@@ -156,6 +157,7 @@ class UserController extends Controller
         $email = $request->input('email');
         $gender = $request->input('gender');
         $role_id = $request->input('role_id');
+        // $branch_id = $request->input('branch_id');
 
         $user = CustomUser::with('schedules')->findOrFail($id);
 
@@ -164,6 +166,7 @@ class UserController extends Controller
         $user->email = $email;
         $user->gender = $gender;
         $user->role_id = $role_id;
+        // $user->branch_id = $branch_id;
 
         if (!$user->update()) {
             return response()->json([
