@@ -16,7 +16,9 @@ class AddUser extends Model
         'password', 
         'role_id' , 
         'branch_id',
-        // 'user_type', 
+        'user_type', 
+        'verified',
+        'token',
         
     ];
 }

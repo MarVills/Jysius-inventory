@@ -41,14 +41,18 @@ class AddUserController extends Controller
         $data['email'] = $request->email;
         $data['password'] = Hash::make($request->password); 
         $data['role_id'] = $request->roleId;
-        // $data['user_type'] = $request->userType;
+        $data['user_type'] = "staff";
         $data['branch_id'] = implode(", ", $request->branchPermission);
+        $data['verified'] = true;
+        $data['token'] = '';
+
 
         //dd($request->all());
         //$response = "something";
         // $data = $request->all();
         $response = AddUser::create($data);
-        return print_r($data);
+        return response()->json($response, 200);
+        // return print_r($data);
         // User::query()->truncate();
         // $response =  DB::table('users')->insert($data);
       

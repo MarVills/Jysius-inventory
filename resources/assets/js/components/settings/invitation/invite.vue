@@ -66,7 +66,7 @@
                 <div v-if="branches.length > 1 || id" class="form-group margin-top col-md-12">
                     <label>{{ trans('lang.branch') }}</label>
 
-                    <div v-for="branch in branches" :key="branch.name" class="custom-control custom-checkbox">
+                    <div v-for="branch in branches" :key="branch.id" class="custom-control custom-checkbox">
                         <input
                             type="checkbox"
                             class="custom-control-input"

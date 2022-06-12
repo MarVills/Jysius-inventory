@@ -1,4 +1,5 @@
 <template>
+    <!-- <div v-if="this.showModal"> -->
     <div>
         <div class="modal-layout-header">
             <div class="row">
@@ -120,7 +121,7 @@
                         :placeholder="trans('lang.choose_one')"
                     >
                         <option value disabled selected>{{ trans('lang.choose_one') }}</option>
-                        <option v-for="role in roles" :key="role.name" :value="role.id">{{ role.title }}</option>
+                        <option v-for="role in roles" :key="role.id" :value="role.id">{{ role.title }}</option>
                     </select>
                     <div class="heightError">
                         <small
@@ -154,6 +155,7 @@
                     <button
                         class="btn app-color mobile-btn"
                         type="submit"
+                        data-dismiss="modal"
                         @click.prevent="addUser()"
                         
                     >{{ id ? trans("lang.save") : trans("lang.add_button") }}
@@ -179,6 +181,7 @@ export default {
 
     data() {
         return {
+            showModal: true,
             submitted: false,
             branchId: "10", 
             branches : [],
@@ -235,6 +238,7 @@ export default {
                         // this.$emit('close');
                         // $(this.modalID).modal("hide");
                         // this.isModalVisible = false;
+                        //this.showModal = false;
                     }
             });
             

@@ -8,16 +8,19 @@ use App\Models\CustomUser;
 use App\Models\EmailTemplate;
 use App\Models\Setting;
 use Illuminate\Http\Request;
+// use Illuminate\Support\Facades\Request;
+use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Invite;
 use App\Models\Role;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use App\User;
 use Illuminate\Support\Str;
 //use Validator, Hash;
 use Config;
-use Illuminate\Http\Hash;
+// use Illuminate\Http\Hash;
 //use Illuminate\Http\Client\Request;
 
 class InviteController extends Controller
@@ -62,9 +65,10 @@ class InviteController extends Controller
             } else {
                 $text = $content->default_content;
             }
-
-            $path = \Request::root();
-            $link = $path . '/accept/' . $token;
+            
+            $req = new Request();
+            $path = $req->root();
+            $link = $path . '/accept' . $token;
 
             $appName = Setting::getFirst('setting_value', 'setting_name', 'email_from_name')->setting_value;
             $invited_by = Auth::user()->first_name . " " . Auth::user()->last_name;
