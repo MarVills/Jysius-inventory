@@ -19,7 +19,7 @@
         <div class="modal-layout-content">
             <pre-loader v-if="!hidePreLoader" class="small-loader-container"></pre-loader>
 
-            <form class="form-row" v-else>
+            <form class="form-row" v-else >
                 <!-- First name -->
                  <div class="form-group col-md-12" v-if="!id">
                     <label>{{ trans('lang.first_name') }}</label>
@@ -147,7 +147,7 @@
                         <br/>
                     </div>
                 </div>
-                <!-- @submmit.prevent="addUser()"
+                <!-- @submit.prevent="addUser()"
                 @click.prevent="addUser()" -->
                
 
@@ -155,7 +155,6 @@
                     <button
                         class="btn app-color mobile-btn"
                         type="submit"
-                        data-dismiss="modal"
                         @click.prevent="addUser()"
                         
                     >{{ id ? trans("lang.save") : trans("lang.add_button") }}
@@ -235,12 +234,14 @@ export default {
             this.$validator.validateAll().then(result => {
                 if (result) {
                         this.postDataMethod("/add-user", this.user_data);
-                        // this.$emit('close');
+                        
                         // $(this.modalID).modal("hide");
                         // this.isModalVisible = false;
                         //this.showModal = false;
+                       
                     }
             });
+            this.$emit('close');
             
         },
         postDataThenFunctionality() {

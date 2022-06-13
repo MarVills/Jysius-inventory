@@ -42,7 +42,7 @@
                     class="modal-content"
                     v-if="isActive"
                     :id="selectedItemId"
-                    :modalID="modalID"
+                    :modalID="inviteModalID"
                 ></invite-user>
             </div>
         </div>
@@ -59,7 +59,7 @@
                     class="modal-content"
                     v-if="isActive"
                     :id="selectedItemId"
-                    :modalID="modalID"
+                    :modalID="addModalID"
                 ></add-user>
             </div>
         </div>
@@ -136,7 +136,8 @@ export default {
                 right_align: "action"
             },
 
-            modalID: "#user-invite-modal",
+            inviteModalID: "#user-invite-modal",
+            addModalID: "#user-add-modal",
             confirmModalID: "#confirm-admin-enable-disable"
         };
     },
@@ -147,7 +148,8 @@ export default {
             instance.addEditAction(id);
         });
 
-        this.modalCloseAction(this.modalID);
+        this.modalCloseAction(this.inviteModalID);
+        this.modalCloseAction(this.addModalID);
         this.modalCloseAction(this.confirmModalID);
 
         this.$hub.$on("disableEnableUser", function(id, status) {
