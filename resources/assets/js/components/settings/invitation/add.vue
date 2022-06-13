@@ -184,6 +184,7 @@ export default {
             submitted: false,
             branchId: "10", 
             branches : [],
+            retrunData: "",
             //branchPermission : [],
            "user_data": {
                 'firstName': "",
@@ -233,8 +234,8 @@ export default {
            
             this.$validator.validateAll().then(result => {
                 if (result) {
-                        this.postDataMethod("/add-user", this.user_data);
-                        
+                        this.returnData = this.postDataMethod("/add-user", this.user_data);
+                        console.log("Return data : ", this.returnData);
                         // $(this.modalID).modal("hide");
                         // this.isModalVisible = false;
                         //this.showModal = false;
