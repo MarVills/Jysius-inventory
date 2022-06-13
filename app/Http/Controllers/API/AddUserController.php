@@ -56,13 +56,19 @@ class AddUserController extends Controller
         $errorMessage = "Error";
         try{
             $response = AddUser::create($data);
+            return response()->json([
+                'message' =>  $errorMessage,
+                'data' => $response,
+            ], 200);
         }catch(\Exception $e){
-        $errorMessage = "something";
+            $errorMessage = "something";
+            $response = AddUser::create($data);
+            return response()->json([
+                'message' =>  $errorMessage,
+                'data' => $response,
+            ], 200);
         }
-        return response()->json([
-            'message' =>  $errorMessage,
-            'data' => $response,
-        ], 200);
+     
         
         // if($response){
         //     return response()->json([
