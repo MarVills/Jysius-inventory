@@ -72,14 +72,17 @@
                         type="email"
                         v-model="user_data.email"
                         :placeholder="trans('lang.enter_email')"
-                        
                     />
+
                     <div class="heightError" >
                         <small
                             class="text-danger"
                             v-show="errors.has('email')"
-                        >{{ errors.first('email') }}</small>
+                            v-for="error in errors.collect('email')"
+                            :key="error.id"
+                        >{{ error }}</small>
                     </div>
+                    
                 </div>
                 <div class="form-group col-md-12" v-else>
                     <label>{{ trans('lang.name') }}</label>
@@ -194,7 +197,6 @@ export default {
                 'roleId': "",
                 'branchPermission': [],
                 // 'userType': "",
-
            }
             
         };
@@ -220,29 +222,23 @@ export default {
             // console.log("data here : ", this.user_data.first_name, this.user_data.last_name)
             // console.log("Something");
             console.log("branch: "+ this.user_data.branchPermission);
-            // this.postDataMethod("/add-user", this.user_data);
-            // axios.post("/add-user", this.user_data).then(
-                
-            //     // response => {}
-            //     console.log("This works !!")
-            // ).catch(error => {
-               
-            //     console.log("Error on adding user.",  error);
-               
-            // });
 
-           
             this.$validator.validateAll().then(result => {
                 if (result) {
-                        this.returnData = this.postDataMethod("/add-user", this.user_data);
-                        console.log("Return data : ", this.returnData);
-                        // $(this.modalID).modal("hide");
-                        // this.isModalVisible = false;
-                        //this.showModal = false;
+                        this.postDataMethod("/add-user", this.user_data);
+               
+                        // axios.post("/add-user", this.user_data).then(
+                
+                        //     console.log("This works !!")
+                        // ).catch(error => {
+               
+                        //     console.log("Error on adding user.",  error);
+               
+                        // });
                        
                     }
             });
-            this.$emit('close');
+          
             
         },
         postDataThenFunctionality() {

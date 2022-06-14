@@ -6,13 +6,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\AddUser;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\DB;
-use App\User;
-use App\Models\Role;
-use Illuminate\Support\Facades\Auth;
-use App\Models\Branch;
-use FontLib\Table\Type\name;
-use Illuminate\Support\Facades\Response;
+use Illuminate\Validation\ValidationException;
+// use Illuminate\Support\Facades\DB;
+// use App\User;
+// use App\Models\Role;
+// use Illuminate\Support\Facades\Auth;
+// use App\Models\Branch;
+// use FontLib\Table\Type\name;
+// use Illuminate\Support\Facades\Response;
 
 class AddUserController extends Controller
 {
@@ -26,15 +27,26 @@ class AddUserController extends Controller
     // }
     public function store(Request $request)
     {
+        // throw ValidationException::withMessages([$request->email => 'This value is incorrect']);
         $this->validate($request, [
             'firstName' => 'required',
             'lastName' => 'required',
-            'email' => 'required | email ',
-            'password' => 'required |min:6',
+            'email' => 'required | email | unique:users,email',
+            'password' => 'required | min:6',
             'roleId' => 'required',
             // 'userType' => '',
             //'branchPermission' => 'required',
         ]);
+
+        // if(!(isset($request->email))){
+        //     return response()->json([
+        //         'message' =>  "Email already exist",
+        //     ], 442);   
+        // }else{
+        //     return response()->json([
+        //         'message' =>  "Else executed",
+        //     ], 200);   
+        // }
 
         $data = array();
         $data['first_name'] = $request->firstName;
@@ -53,23 +65,18 @@ class AddUserController extends Controller
         // return response()->json($response, 200);
         // return print_r($data);
         // $response =  DB::table('users')->insert($data);
-        $errorMessage = "Error";
-        try{
-            $response = AddUser::create($data);
-            return response()->json([
-                'message' =>  $errorMessage,
-                'data' => $response,
-            ], 200);
-        }catch(\Exception $e){
-            $errorMessage = "something";
-            $response = AddUser::create($data);
-            return response()->json([
-                'message' =>  $errorMessage,
-                'data' => $response,
-            ], 200);
-        }
-     
         
+        $response = AddUser::create($data);
+        return response()->json([
+            'message' =>  "User saved successfully",
+            'data' => $response,
+        ], 200);
+
+        
+
+        
+        
+       
         // if($response){
         //     return response()->json([
         //         'message' =>  $errorMessage,
