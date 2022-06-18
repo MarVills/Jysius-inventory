@@ -346,29 +346,29 @@ export default {
                                 key: "description",
                                 type: "text",
                             },
-                            {
-                                title: "lang.group",
-                                key: "group_name",
-                                type: "text",
-                                sortable: true
-                            },
-                            {
-                                title: "lang.brand",
-                                key: "brand_name",
-                                type: "text",
-                                sortable: true
-                            },
-                            {
-                                title: "lang.category",
-                                key: "category_name",
-                                type: "text",
-                                sortable: true
-                            },
-                            {
-                                title: "lang.purchase_price",
-                                key: "purchase_price",
-                                type: "text",
-                            },
+                            // {
+                            //     title: "lang.group",
+                            //     key: "group_name",
+                            //     type: "text",
+                            //     sortable: true
+                            // },
+                            // {
+                            //     title: "lang.brand",
+                            //     key: "brand_name",
+                            //     type: "text",
+                            //     sortable: true
+                            // },
+                            // {
+                            //     title: "lang.category",
+                            //     key: "category_name",
+                            //     type: "text",
+                            //     sortable: true
+                            // },
+                            // {
+                            //     title: "lang.purchase_price",
+                            //     key: "purchase_price",
+                            //     type: "text",
+                            // },
                             {
                                 title: "lang.selling_price",
                                 key: "selling_price",
@@ -395,27 +395,27 @@ export default {
                         checkbox: false,
                         right_align: ['action', 'product_quantity', 'purchase_price', 'selling_price'],
                         filters: [
-                            {
-                                title: "lang.group",
-                                key: "group",
-                                type: "dropdown",
-                                languageType: "raw",
-                                options: group
-                            },
-                            {
-                                title: "lang.brand",
-                                key: "brand",
-                                type: "dropdown",
-                                languageType: "raw",
-                                options: brand
-                            },
-                            {
-                                title: "lang.category",
-                                key: "category",
-                                type: "dropdown",
-                                languageType: "raw",
-                                options: category
-                            }
+                            // {
+                            //     title: "lang.group",
+                            //     key: "group",
+                            //     type: "dropdown",
+                            //     languageType: "raw",
+                            //     options: group
+                            // },
+                            // {
+                            //     title: "lang.brand",
+                            //     key: "brand",
+                            //     type: "dropdown",
+                            //     languageType: "raw",
+                            //     options: brand
+                            // },
+                            // {
+                            //     title: "lang.category",
+                            //     key: "category",
+                            //     type: "dropdown",
+                            //     languageType: "raw",
+                            //     options: category
+                            // }
                         ]
                     };
                     instance.hidePreLoader = true;

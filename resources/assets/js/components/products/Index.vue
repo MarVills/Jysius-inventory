@@ -12,7 +12,7 @@
         <div class="main-layout-card">
             <div class="custom-tabs">
                 <ul class="nav nav-tabs">
-                    <li class="nav-item d-flex justify-content-center" :class="{'active':isSelectedTab(tab.name)}" @click.prevent="selectTab(tab.name, tab.component)"  v-if="isVisible(tab.name)" v-for="tab in tabs">
+                     <li class="nav-item d-flex justify-content-center" :class="{'active':isSelectedTab(tab.name)}" @click.prevent="selectTab(tab.name, tab.component)" v-for="tab in tabs" :key="tab.id"> <!--v-if="isVisible(tab.name)" -->
                         <a class="nav-link" href="#customers" @click.prevent="isActive = 1"> {{ trans(tab.lang) }} </a>
                     </li>
                 </ul>
@@ -40,11 +40,11 @@
                 loadSales:[],
                 tabs:[
                     { name:"products", lang:"lang.products", component: "all-products" },
-                    { name:"product_category", lang:"lang.categories", component: "product-categories" },
-                    { name:"product_brand", lang:"lang.brands", component: "product-brands" },
-                    { name:"product_group", lang:"lang.groups", component: "product-groups" },
-                    { name:"variant_attributes", lang:"lang.variant_attributes", component: "product-attributes" },
-                    { name:"units", lang:"lang.units", component: "product-units" },
+                    // { name:"product_category", lang:"lang.categories", component: "product-categories" },
+                    // { name:"product_brand", lang:"lang.brands", component: "product-brands" },
+                    // { name:"product_group", lang:"lang.groups", component: "product-groups" },
+                    // { name:"variant_attributes", lang:"lang.variant_attributes", component: "product-attributes" },
+                    // { name:"units", lang:"lang.units", component: "product-units" },
                 ],
                 isVisible: function (tabName) {
                     return (this[tabName] === 'manage' ||this[tabName] === 'read_only');

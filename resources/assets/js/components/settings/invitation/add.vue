@@ -221,7 +221,7 @@ export default {
             this.submitted = true;
             // console.log("data here : ", this.user_data.first_name, this.user_data.last_name)
             // console.log("Something");
-            console.log("branch: "+ this.user_data.branchPermission);
+            // console.log("branch: "+ this.user_data.branchPermission);
 
             this.$validator.validateAll().then(result => {
                 if (result) {
@@ -236,6 +236,8 @@ export default {
                
                         // });
                        
+                    }else{
+                        
                     }
             });
           
