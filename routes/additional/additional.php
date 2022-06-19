@@ -5,6 +5,7 @@
 use App\Http\Controllers\API\EmailTemplateController;
 use App\Http\Controllers\InstallDemoDataController;
 use App\Http\Controllers\Setup\EnvironmentController;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/corn-job', [EmailTemplateController::class, 'callCornJob']);
 

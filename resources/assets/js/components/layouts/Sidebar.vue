@@ -28,9 +28,9 @@
 
             <li
                 v-if="products=='manage' || product_category == 'manage' || product_brand == 'manage' || product_group== 'manage' || variant_attributes == 'manage' || units=='manage' || products=='read_only' || product_category == 'read_only' || product_brand == 'read_only' || product_group== 'read_only' || variant_attributes == 'read_only' || units=='read_only'"
-                :class="{'active-side-bar': currentUrl == publicPath+'/products', 'active-hover': isConnected || offline == 0}"
+                :class="{'active-side-bar': currentUrl == publicPath+'/ingredients', 'active-hover': isConnected || offline == 0}"
             >
-                <a :href="publicPath+'/products'" :class="{disabled:!isConnected && offline == 1}">
+                <a :href="publicPath+'/ingredients'" :class="{disabled:!isConnected && offline == 1}">
                      <i class="la la-cookie-bite"></i>
                     <div>{{ trans('lang.ingredients') }}</div>
                 </a>
