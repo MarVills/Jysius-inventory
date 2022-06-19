@@ -14,14 +14,14 @@
                 <i class="la la-close la-2x"></i>
             </a>
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link open-todo-icon"
                        href="#"
                        @click.prevent="openTodo"
                        :class="{disabled:!isConnected && offline == 1}">
                         <i class="la la-list-ul la-2x"></i>
                     </a>
-                </li>
+                </li> -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle hide-dropdown-icon"
                        href="#"
@@ -152,7 +152,7 @@
                     <div class="modal-layout-content">
                         <table class="table table-borderless shortcut-list">
                             <tbody>
-                            <tr v-for="(el, key) in shortcutKeyInfo">
+                            <tr v-for="(el, key) in shortcutKeyInfo" :key="el.id">
                                 <th>
                                     <span class="border rounded px-2 py-1 m-2">{{ el.shortCutKey }}</span>
                                 </th>

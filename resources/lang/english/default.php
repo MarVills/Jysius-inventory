@@ -475,6 +475,9 @@ return array(
     "successfully_updated" => "updated successfully.",
     "offline_alert" => "You are offline but don’t worry, you can continue your sales and we’ll sync the sales when will be online again. Please don’t close the browser.",
     "online_alert" => "You are online. We are syncing your sales.",
+    
+    // Ingredients
+    "ingredients" => "Ingredients",
 
     // Product
     "product" => "Product",

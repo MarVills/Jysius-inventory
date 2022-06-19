@@ -19,20 +19,35 @@
                 :class="{'active-side-bar': currentUrl == publicPath+'/sales', 'active-hover': isConnected || offline == 0}"
             >
                 <a :href="publicPath+'/sales'" :class="{disabled:!isConnected && offline == 1}">
-                    <i class="la la-credit-card"></i>
+                    <!-- <i class="la la-credit-card"></i> -->
+                    <i class="la la-usd"></i>
                     <div>{{ trans('lang.sales') }}</div>
                 </a>
             </li>
+            <!-- ================================================================================ -->
+
+            <li
+                v-if="products=='manage' || product_category == 'manage' || product_brand == 'manage' || product_group== 'manage' || variant_attributes == 'manage' || units=='manage' || products=='read_only' || product_category == 'read_only' || product_brand == 'read_only' || product_group== 'read_only' || variant_attributes == 'read_only' || units=='read_only'"
+                :class="{'active-side-bar': currentUrl == publicPath+'/products', 'active-hover': isConnected || offline == 0}"
+            >
+                <a :href="publicPath+'/products'" :class="{disabled:!isConnected && offline == 1}">
+                     <i class="la la-cookie-bite"></i>
+                    <div>{{ trans('lang.ingredients') }}</div>
+                </a>
+            </li>
+            <!-- ================================================================================ -->
+
              <li
                 v-if="products=='manage' || product_category == 'manage' || product_brand == 'manage' || product_group== 'manage' || variant_attributes == 'manage' || units=='manage' || products=='read_only' || product_category == 'read_only' || product_brand == 'read_only' || product_group== 'read_only' || variant_attributes == 'read_only' || units=='read_only'"
                 :class="{'active-side-bar': currentUrl == publicPath+'/products', 'active-hover': isConnected || offline == 0}"
             >
                 <a :href="publicPath+'/products'" :class="{disabled:!isConnected && offline == 1}">
-                    <i class="la la-share-alt"></i>
+                    <!-- <i class="la la-share-alt"></i> -->
+                     <i class="la la-box-open"></i>
                     <div>{{ trans('lang.products') }}</div>
                 </a>
             </li>
-            <li
+            <!-- <li
                 v-if="customers == 'manage' || customer_group == 'manage' || suppliers == 'manage' ||customers == 'read_only' || customer_group == 'read_only' || suppliers == 'read_only' "
                 :class="{'active-side-bar': currentUrl == publicPath+'/contacts', 'active-hover': isConnected || offline == 0}"
             >
@@ -40,7 +55,7 @@
                     <i class="la la-users"></i>
                     <div>{{ trans('lang.contacts') }}</div>
                 </a>
-            </li>
+            </li> -->
             <li
                 v-if="receives==1"
                 :class="{'active-side-bar': currentUrl == publicPath+'/receives', 'active-hover': isConnected || offline == 0}"
