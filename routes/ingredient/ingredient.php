@@ -9,11 +9,11 @@ use App\Http\Controllers\API\ProductsController;
 use App\Http\Controllers\API\ProductUnitsController;
 use Illuminate\Support\Facades\Route;
 
-Route::group(['prefix' => 'products', 'as' => 'products'], function () {
-    Route::get('ingredients', [ProductApiController::class, 'index']);
+Route::group(['prefix' => 'ingredients', 'as' => 'ingredients'], function () {
+    // Route::get('ingredients', [IngredientsApiController::class, 'index']);
 
-    // Products
-    Route::post('ingredients', [ProductsController::class, 'getProduct']);
+    //  Ingredients
+    Route::post('ingredients', [IngredientsController::class, 'ingredientPage']);
 
     // Route::post('store', [ProductsController::class, 'storeProduct'])
     //     ->middleware('permissions:can_manage_products');

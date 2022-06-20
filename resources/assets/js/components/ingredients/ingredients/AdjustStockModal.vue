@@ -39,7 +39,7 @@
                                 name="branch_id"
                                 class="custom-select">
                             <option value disabled selected>{{ trans('lang.choose_one') }}</option>
-                            <option v-for="branch in branches" :value="branch.id">{{branch.name}}</option>
+                            <option v-for="branch in branches" :key="branch.id" :value="branch.id">{{branch.name}}</option>
                         </select>
                         <div class="heightError">
                             <small
@@ -106,6 +106,7 @@
                             <option value disabled selected>{{ trans('lang.choose_one') }}</option>
                             <option
                                     v-for="item in adjustMentTypes"
+                                    :key="item.id"
                                     :value="item.id"
                             >{{ item.title }}
                             </option>

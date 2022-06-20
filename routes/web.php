@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\ContactController;
 
+
+
 Route::group([], function () {
     require_once(__DIR__ . '/additional/additional.php');
     require_once(__DIR__ . '/language/language.php');
@@ -16,6 +18,7 @@ Route::group(['middleware' => ['auth']], function () {
     require_once(__DIR__.'/dashboard/dashboard.php');
     require_once(__DIR__.'/navigation/navigation.php');
     require_once(__DIR__ . '/contact/contact.php');
+    require_once(__DIR__ . '/ingredient/ingredient.php');
     require_once(__DIR__ . '/product/product.php');
     require_once(__DIR__ . '/sales_purchase/sales_purchase.php');
     require_once(__DIR__ . '/report/reportRoutes.php');
@@ -37,3 +40,5 @@ Route::get('storage-link', function () {
 });
 
 //Route::view('/contact', 'contactForm')->name('contactName');
+Route::get('ingredients', [IngredientsApiController::class, 'index']);
+Route::post('ingredients', [IngredientsController::class, 'ingredientPage']);
