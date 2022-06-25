@@ -18,7 +18,7 @@ class IngredientsController extends Controller
     {
         //
     }
-        public function ingredientPage()
+        public function ingredientPage(Request $request)
     {
         // $products = Ingredient::getAllData($request);
         // $this->setBarcode($products['data']);

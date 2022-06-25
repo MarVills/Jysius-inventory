@@ -10,7 +10,7 @@ use App\Http\Controllers\API\ProductUnitsController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'ingredients', 'as' => 'ingredients'], function () {
-    // Route::get('ingredients', [IngredientsApiController::class, 'index']);
+    Route::get('ingredients', [IngredientsApiController::class, 'index']);
 
     //  Ingredients
     Route::post('ingredients', [IngredientsController::class, 'ingredientPage']);

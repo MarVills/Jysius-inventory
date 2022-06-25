@@ -36,6 +36,7 @@ class ProductsController extends Controller
 
     public function getProduct(Request $request)
     {
+        
         $products = Product::getAllData($request);
         $this->setBarcode($products['data']);
 

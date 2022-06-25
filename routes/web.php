@@ -40,5 +40,5 @@ Route::get('storage-link', function () {
 });
 
 //Route::view('/contact', 'contactForm')->name('contactName');
-Route::get('ingredients', [IngredientsApiController::class, 'index']);
-Route::post('ingredients', [IngredientsController::class, 'ingredientPage']);
+// Route::get('ingredients', [IngredientsApiController::class, 'index']);
+// Route::post('ingredients', [IngredientsController::class, 'ingredientPage']);
