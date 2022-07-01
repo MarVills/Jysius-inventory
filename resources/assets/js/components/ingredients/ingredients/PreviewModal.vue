@@ -67,15 +67,15 @@
                                 <table v-if="exportExcelData.length>0" class="table table-bordered text-nowrap">
                                     <thead class="preview-header preview-side">
                                     <tr>
-                                        <th v-for="(data, index) in columnHeader">
+                                        <th v-for="(data, index) in columnHeader" :key="(data.id, index.id)">
                                             <span>{{ data }}</span>
                                         </th>
                                     </tr>
                                     </thead>
 
                                     <tbody>
-                                        <tr v-for="data in exportExcelData">
-                                            <td v-for="fileColumnTitle in columnHeader">
+                                        <tr v-for="data in exportExcelData" :key="data.id">
+                                            <td v-for="fileColumnTitle in columnHeader" :key="fileColumnTitle.id">
                                                 <span :class="{'text-danger': errorData.includes(data[fileColumnTitle]) || data.INVALID_DATA}">
                                                     {{data[fileColumnTitle]}}
                                                 </span>
@@ -87,7 +87,7 @@
                                 <table v-else class="table table-bordered preview-table text-nowrap">
                                     <thead class="preview-header preview-side">
                                     <tr>
-                                        <th v-for="(data, index) in fileColumnTitles">
+                                        <th v-for="(data, index) in fileColumnTitles" :key="(data.id, index.id)">
                                             <span :class="{'text-danger': !isRequired.includes(data) }">
                                             {{ data }}
                                         </span>
@@ -95,8 +95,8 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr v-for="data in jsonData">
-                                        <td v-for="fileColumnTitle in fileColumnTitles">
+                                    <tr v-for="data in jsonData" :key="data.id">
+                                        <td v-for="fileColumnTitle in fileColumnTitles" :key="fileColumnTitle.id">
                                             <span v-if="data[fileColumnTitle]"
                                                   :class="{'text-danger': dublicateArr.includes(data[fileColumnTitle])}">{{data[fileColumnTitle]}}</span>
                                             <span v-else-if="emptyFields.includes(fileColumnTitle) || errorData.includes(data[fileColumnTitle])"

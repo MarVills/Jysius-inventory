@@ -27,12 +27,13 @@
                     </div>
                     <div id="barcode" class="modal-body app-bg-color p-3">
                         <div class="bg-white rounded p-3">
-                            <div class="page full-a4" v-for="(barcode,index) in newBarcode">
+                            <div class="page full-a4" v-for="(barcode,index) in newBarcode" :key="(barcode.id, index.id)">
                                 <div class="row equal">
                                     <div
                                             class="mb-4"
                                             :class="[(totalColumns==1?'col-12':''),(totalColumns==2?'col-6':''),(totalColumns==3?'col-4':'')]"
                                             v-for="(variant,index) in barcode"
+                                            :key="(variant.id, index.id)"
                                     >
                                         <div class="barcode-container">
                                             <h4 v-if="includeAppNameInBarcode == 1" style="margin: 0; padding: 0;">{{app_name}}</h4>

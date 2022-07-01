@@ -4,7 +4,7 @@
 
 @section('content')
      @inject('permission', 'App\Http\Controllers\API\PermissionController')
-    <products-index
+    <ingredients-index
             products={{$permission->productManagePermission()}}
             product_category={{$permission->productCategoryManagePermission()}}
             product_brand={{$permission->productBrandManagePermission()}}
@@ -14,6 +14,6 @@
             tab_name={{$tab_name}}
             route_name={{$route_name}}
     >
-    </products-index>
+    </ingredients-index>
 
 @endsection

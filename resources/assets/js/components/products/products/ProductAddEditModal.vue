@@ -60,6 +60,7 @@
                         <select v-model="product.category" id="product-category" class="custom-select">
                             <option value disabled selected>{{ trans('lang.choose_one') }}</option>
                             <option v-for="category in categoryList"
+                                    :key="category.id"
                                     :value="category.id">
                                 {{ category.name }}
                             </option>
@@ -79,7 +80,7 @@
                     <div class="input-group">
                         <select v-model="product.brand" id="product-brand" class="custom-select">
                             <option value disabled selected>{{ trans('lang.choose_one') }}</option>
-                            <option v-for="brand in brandList" :value="brand.id">{{ brand.name }}</option>
+                            <option v-for="brand in brandList" :key="brand.id" :value="brand.id">{{ brand.name }}</option>
                         </select>
                         <div class="input-group-append">
                             <button class="btn app-color"
@@ -96,7 +97,7 @@
                     <div class="input-group">
                         <select v-model="product.group" id="product-group" class="custom-select">
                             <option value disabled selected>{{ trans('lang.choose_one') }}</option>
-                            <option v-for="group in groupList" :value="group.id">{{ group.name }}</option>
+                            <option v-for="group in groupList" :key="group.id" :value="group.id">{{ group.name }}</option>
                         </select>
                         <div class="input-group-append">
                             <button class="btn app-color"
@@ -113,7 +114,7 @@
                     <div class="input-group">
                         <select v-model="product.unit" id="product-unit" class="custom-select">
                             <option value disabled selected>{{ trans('lang.choose_one') }}</option>
-                            <option v-for="unit in unitList" :value="unit.id">{{ unit.name }}</option>
+                            <option v-for="unit in unitList" :key="unit.id" :value="unit.id">{{ unit.name }}</option>
                         </select>
                         <div class="input-group-append">
                             <button class="btn app-color"
@@ -153,7 +154,7 @@
                         <option value disabled>{{ trans('lang.choose_one') }}</option>
                         <option value="no-tax">{{ trans('lang.no_tax') }}</option>
                         <option value="default-tax">{{ trans('lang.default_tax') }}</option>
-                        <option v-for="tax in taxList" :value="tax.id">{{ tax.name }}</option>
+                        <option v-for="tax in taxList" :key="tax.id" :value="tax.id">{{ tax.name }}</option>
                     </select>
                     <div class="heightError">
                         <small
@@ -250,7 +251,7 @@
                             name="branch"
                             class="custom-select">
                         <option value disabled>{{ trans('lang.choose_one') }}</option>
-                        <option v-for="branch in branchList" :value="branch.id">{{ branch.name }}</option>
+                        <option v-for="branch in branchList" :key="branch.id" :value="branch.id">{{ branch.name }}</option>
                     </select>
                     <div class="heightError" v-if="submitted && errors.has('branch')">
                         <small class="text-danger" v-show="errors.has('branch')">
@@ -385,6 +386,7 @@
                                         >{{ trans('lang.add_another_variant') }}</option>
                                         <option
                                             v-for="productAttribute in allAttributes"
+                                            :key="productAttribute.id"
                                             :value="productAttribute.id"
                                         >{{ productAttribute.name }}</option>
                                     </select>
@@ -394,7 +396,7 @@
                     </div>
                 </div>
                 <div class="loader" v-if="attributeLoader"></div>
-                <div v-else v-for="(tempAttribute,index) in tempAttributeList">
+                <div v-else v-for="(tempAttribute,index) in tempAttributeList" :key="(tempAttribute.id, index.id)">
                     <div class="row">
                         <div class="col-12">
                             <div class="variant-values">
@@ -402,7 +404,8 @@
                                 <div class="chips-container">
                                     <span
                                         class="chip"
-                                        v-for="(chips,chipIndex) in chipArray[tempAttribute.id]"
+                                        v-for="(chips,chipIndex) in chipArray[tempAttribute.id] "
+                                        :key="(chips.id, chipIndex.id)"
                                     >
                                         {{ chips }}
                                         <i
@@ -465,7 +468,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="(item, index) in productVariant">
+                            <tr v-for="(item, index) in productVariant" :key="(ite.id, index.id)">
                                 <!--Edit check box-->
                                 <td class="border-0 add-product-padding">
                                     <div

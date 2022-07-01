@@ -290,6 +290,10 @@ Vue.component('barcode-modal', require('./components/products/products/BarcodeMo
 Vue.component('barcode-preview-modal', require('./components/products/products/BarcodePreviewModal.vue'));
 Vue.component('adjust-stock-modal', require('./components/products/products/AdjustStockModal'));
 
+// Ingredients
+Vue.component('ingredients-index', require('./components/ingredients/Index.vue'));
+Vue.component('ingredient-details', require('./components/ingredients/ingredients/IngredientDetails.vue'));
+
 //Product category
 Vue.component('product-categories', require('./components/products/category/CategorieIndex.vue'));
 
