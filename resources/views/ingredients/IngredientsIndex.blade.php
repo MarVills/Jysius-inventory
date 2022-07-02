@@ -13,6 +13,7 @@
             units={{$permission->productUnitManagePermission()}}
             tab_name={{$tab_name}}
             route_name={{$route_name}}
+            
     >
     </ingredients-index>
 
