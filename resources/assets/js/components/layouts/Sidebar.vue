@@ -37,7 +37,6 @@
             </li>
 
             <!-- ================================================================================ -->
-            <!-- publicPath+'/ingredients' -->
 
              <li
                 v-if="products=='manage' || product_category == 'manage' || product_brand == 'manage' || product_group== 'manage' || variant_attributes == 'manage' || units=='manage' || products=='read_only' || product_category == 'read_only' || product_brand == 'read_only' || product_group== 'read_only' || variant_attributes == 'read_only' || units=='read_only'"
