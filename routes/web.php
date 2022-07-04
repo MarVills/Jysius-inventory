@@ -5,7 +5,10 @@ use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\ContactController;
-
+use App\Http\Controllers\API\IngredientsController;
+use App\Http\Controllers\API\IngredientsApiController;
+use App\Models\Ingredient;
+use App\Models\Product;
 
 
 Route::group([], function () {
@@ -42,3 +45,12 @@ Route::get('storage-link', function () {
 //Route::view('/contact', 'contactForm')->name('contactName');
 // Route::get('ingredients', [IngredientsApiController::class, 'index']);
 // Route::post('ingredients', [IngredientsController::class, 'ingredientPage']);
+
+Route::get('ingredients', function () {
+    ini_set('memory_limit', '1024MB');
+    return Product::with('variants')->get();
+});
+
+Route::post('ingredients', function () {
+    return 'welcome to dashboard!';
+});

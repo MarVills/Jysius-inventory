@@ -1,5 +1,7 @@
 <?php
 
+// var_dump(memory_get_usage());
+
 $gainConfig = require_once '../config/gain.php';
 
 

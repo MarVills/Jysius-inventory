@@ -12,11 +12,13 @@ use App\Http\Controllers\API\IngredientsApiController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'ingredients', 'as' => 'ingredients'], function () {
-    Route::get('ingredients', [IngredientsApiController::class, 'index']);
+    //Route::get('ingredients', [IngredientsApiController::class, 'index']);
 
     //  Ingredients
-    Route::post('ingredients', [IngredientsController::class, 'ingredientPage']);
-
+    // Route::post('ingredients', [IngredientsController::class, 'ingredientPage']);
+    // Route::post('ingredients', function () {
+    //     return 'welcome to dashboard!';
+    // });
     // Route::post('store', [ProductsController::class, 'storeProduct'])
     //     ->middleware('permissions:can_manage_products');
 
