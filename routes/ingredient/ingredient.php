@@ -1,12 +1,14 @@
 <?php
 
-use App\Http\Controllers\API\ProductApiController;
-use App\Http\Controllers\API\ProductAttributesController;
-use App\Http\Controllers\API\ProductBrandsController;
-use App\Http\Controllers\API\ProductCategoriesController;
-use App\Http\Controllers\API\ProductGroupsController;
-use App\Http\Controllers\API\ProductsController;
-use App\Http\Controllers\API\ProductUnitsController;
+
+// use App\Http\Controllers\API\ProductAttributesController;
+// use App\Http\Controllers\API\ProductBrandsController;
+// use App\Http\Controllers\API\ProductCategoriesController;
+// use App\Http\Controllers\API\ProductGroupsController;
+// use App\Http\Controllers\API\ProductUnitsController;
+
+use App\Http\Controllers\API\IngredientsController;
+use App\Http\Controllers\API\IngredientsApiController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'ingredients', 'as' => 'ingredients'], function () {
