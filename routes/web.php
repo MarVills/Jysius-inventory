@@ -14,12 +14,12 @@ use App\Models\Product;
 Route::group([], function () {
     require_once(__DIR__ . '/additional/additional.php');
     require_once(__DIR__ . '/language/language.php');
-    require_once(__DIR__.'/auth/auth.php');
+    require_once(__DIR__ . '/auth/auth.php');
 });
 Route::group(['middleware' => ['auth']], function () {
 
-    require_once(__DIR__.'/dashboard/dashboard.php');
-    require_once(__DIR__.'/navigation/navigation.php');
+    require_once(__DIR__ . '/dashboard/dashboard.php');
+    require_once(__DIR__ . '/navigation/navigation.php');
     require_once(__DIR__ . '/contact/contact.php');
     require_once(__DIR__ . '/ingredient/ingredient.php');
     require_once(__DIR__ . '/product/product.php');
@@ -47,10 +47,11 @@ Route::get('storage-link', function () {
 // Route::post('ingredients', [IngredientsController::class, 'ingredientPage']);
 
 Route::get('ingredients', function () {
-    ini_set('memory_limit', '1024MB');
-    return Product::with('variants')->get();
+    ini_set('memory_limit', '1024M');
+    // return Product::with('variants')->get();
+    return dd('welcome to dashboard!');
 });
 
 Route::post('ingredients', function () {
-    return 'welcome to dashboard!';
+    return dd('welcome to dashboard!');
 });
