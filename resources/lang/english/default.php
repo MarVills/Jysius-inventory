@@ -477,7 +477,11 @@ return array(
     "online_alert" => "You are online. We are syncing your sales.",
     
     // Ingredients
+    "ingredient" => "Ingredient",
     "ingredients" => "Ingredients",
+    "edit_ingredient" => "Edit Ingredient",
+    "add_new_ingredient" => "Add New Ingredient",
+    "upload_ingredient_image" => "Upload ingredient image",
 
     // Product
     "product" => "Product",

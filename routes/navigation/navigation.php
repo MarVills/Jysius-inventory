@@ -8,6 +8,7 @@ Route::get('profile-view', [NavigationController::class, 'profileView']);
 Route::get('/settings', [NavigationController::class, 'settingsView']);
 Route::get('/invite', [NavigationController::class, 'inviteView']);
 Route::get('/products', [NavigationController::class, 'productView']);
+Route::get('/ingredients', [NavigationController::class, 'ingredientView']);
 Route::get('/details/{id}', [NavigationController::class, 'productDetailsView']);
 Route::get('/contacts', [NavigationController::class, 'contactView']);
 Route::get('/customers', [NavigationController::class, 'customerView']);

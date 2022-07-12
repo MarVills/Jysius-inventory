@@ -4,8 +4,8 @@
             <div class="container-fluid p-0">
                 <div class="row">
                     <div class="col-10">
-                        <h5 v-if="id" class="m-0">{{ trans('lang.edit_product') }}</h5>
-                        <h5 v-else class="m-0">{{ trans('lang.add_new_product') }}</h5>
+                        <h5 v-if="id" class="m-0">{{ trans('lang.edit_ingredient') }}</h5>
+                        <h5 v-else class="m-0">{{ trans('lang.add_new_ingredient') }}</h5>
                     </div>
                     <div class="col-2 text-right">
                         <button
@@ -54,7 +54,7 @@
 
                 </div>
 
-                <div class="form-group col-md-6 margin-top">
+                <!-- <div class="form-group col-md-6 margin-top">
                     <label for="product-category">{{ trans('lang.category') }}</label>
                     <div class="input-group">
                         <select v-model="product.category" id="product-category" class="custom-select">
@@ -125,9 +125,9 @@
                             </button>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="mb-2 col-md-6">
-                    <label>{{ trans('lang.upload_product_image') }}</label>
+                    <label>{{ trans('lang.upload_ingredient_image') }}</label>
                     <div class="custom-file">
                         <input
                             type="file"
@@ -142,7 +142,7 @@
                         </label>
                     </div>
                 </div>
-                <div class="form-group col-md-6">
+                <!-- <div class="form-group col-md-6">
                     <label for="product-tax">{{ trans('lang.tax') }}</label>
                     <select
                         v-model="product.tax"
@@ -162,10 +162,10 @@
                             v-show="errors.has('tax')"
                         >{{ errors.first('tax') }}</small>
                     </div>
-                </div>
+                </div> -->
 
             </div>
-            <div class="form-row mx-0 mb-3 bg-white rounded p-3" v-if="!id">
+            <!-- <div class="form-row mx-0 mb-3 bg-white rounded p-3" v-if="!id">
                 <div class="col-md-12 mb-3">
                     <h5 class="mb-0">{{ trans('lang.chose_product_type') }}</h5>
                 </div>
@@ -202,7 +202,7 @@
                         </label>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <div class="form-row mx-0 mb-3 bg-white rounded p-3" v-if="!id && branchList.length > 0">
                 <div class="col-md-12 mb-3">
@@ -285,7 +285,7 @@
                         :class="{ 'is-invalid':submitted && errors.has('sallingPrice') }"
                     ></common-input>
                 </div>
-                <div class="form-group col-md-4">
+                <!-- <div class="form-group col-md-4">
                     <label for="standard-product-sku">{{trans('lang.sku')}}</label>
                     <input
                         id="standard-product-sku"
@@ -301,7 +301,7 @@
                             v-show="sku.includes(standardProductSku) && standardProductSku != null && standardProductSku !== '' && checkSubmit"
                         >{{trans('lang.sku_already_exists') }}</small>
                     </div>
-                </div>
+                </div> -->
                 <div class="form-group col-md-4">
                     <label for="standard-product-barcode">{{trans('lang.barcode')}}</label>
                     <input
@@ -341,7 +341,7 @@
 
                 </div>
 
-                <div class="form-group col-md-4">
+                <!-- <div class="form-group col-md-4">
                     <label>{{trans('lang.re_order')}}</label>
                     <input
                         id="product-re-order"
@@ -350,7 +350,7 @@
                         class="form-control"
                         v-model="product.reorder"
                     />
-                </div>
+                </div> -->
             </div>
 
             <div v-else id="addVariantSection" class="mb-3 bg-white rounded p-3">

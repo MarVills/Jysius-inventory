@@ -293,6 +293,9 @@ Vue.component('adjust-stock-modal', require('./components/products/products/Adju
 // Ingredients
 Vue.component('ingredients-index', require('./components/ingredients/Index.vue'));
 Vue.component('ingredient-details', require('./components/ingredients/ingredients/IngredientDetails.vue'));
+Vue.component('ingredient-add-edit-modal', require('./components/ingredients/ingredients/IngredientAddEditModal.vue'));
+Vue.component('all-ingredients', require('./components/ingredients/ingredients/AllIngredients.vue'));
+
 
 //Product category
 Vue.component('product-categories', require('./components/products/category/CategorieIndex.vue'));

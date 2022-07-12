@@ -46,12 +46,12 @@ Route::get('storage-link', function () {
 // Route::get('ingredients', [IngredientsApiController::class, 'index']);
 // Route::post('ingredients', [IngredientsController::class, 'ingredientPage']);
 
-Route::get('ingredients', function () {
-    ini_set('memory_limit', '1024M');
-    // return Product::with('variants')->get();
-    return dd('welcome to dashboard!');
-});
+// Route::get('ingredients', function () {
+//     ini_set('memory_limit', '1024M');
+//     // return Product::with('variants')->get();
+//     return dd('welcome to dashboard!');
+// });
 
-Route::post('ingredients', function () {
-    return dd('welcome to dashboard!');
-});
+// Route::post('ingredients', function () {
+//     return dd('welcome to dashboard!');
+// });

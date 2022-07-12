@@ -8,14 +8,15 @@
             <div class="main-layout-card-header-with-button">
                 <div class="main-layout-card-content-wrapper">
                     <div class="main-layout-card-header-contents">
-                        <h5 class="m-0">{{ trans('lang.products') }}</h5>
+                        <h5 class="m-0">{{ trans('lang.ingredients') }}</h5>
                     </div>
                     <div v-if="permission !== 'read_only'"
                          class="main-layout-card-header-contents text-right d-flex justify-content-end">
                         <div class="p-1">
                             <button class="btn btn-primary app-color"
-                                    @click.prevent="addEditAction(''), openProductModal()">
+                                    @click.prevent="addEditAction(''), openIngredientModal()">
                                 {{ trans('lang.add') }}
+                             
                             </button>
                         </div>
                         <div class="p-1">
@@ -24,7 +25,7 @@
                                                   buttonText="export"
                                                   v-on:submit="exportStatus"/>
                         </div>
-                        <div class="py-1 pl-1 pr-0">
+                        <!-- <div class="py-1 pl-1 pr-0">
                             <button type="button"
                                     class="btn btn-primary app-color dropdown-toggle"
                                     data-toggle="dropdown">
@@ -53,7 +54,7 @@
                                     {{ trans('lang.print_barcode') }}
                                 </a>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -67,21 +68,21 @@
                                  :tab_name="tabName"
                                  :route_name="routeName"/>
 
-            <!-- Modal product -->
+            <!-- Modal ingredient -->
             <div class="modal fade"
-                 id="product-add-edit-modal"
+                 id="ingredient-add-edit-modal"
                  :style="[checkStatus ? { 'z-index': 1030 } : {}]"
                  tabindex="-1"
                  role="dialog"
                  aria-labelledby="myLargeModalLabel"
                  aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-xl modal-xxl" role="document">
-                    <product-add-edit-modal class="modal-content"
-                                            v-if="isActiveProduct"
+                    <ingredient-add-edit-modal class="modal-content"
+                                            v-if="isActiveIngredient"
                                             @resetModal="resetModal"
                                             @setActiveAttributeModal="getActiveAttributeModal"
                                             @clickedSomething="handleClickInParent"
-                                            @disable="disableProductModal"
+                                            @disable="disableIngredientModal"
                                             @setModalOptionValue="setModalOptionValue"
                                             :id="selectedItemId"
                                             :variantSaveStatus="variantSaveStatus"
@@ -177,7 +178,7 @@ export default {
             buttonLoader: false,
             hidePreLoader: false,
 
-            isActiveProduct: false,
+            isActiveIngredient: false,
             isImportModalActive: false,
             isActiveAttributeModal: false,
             isAdjustStockModalActive: false,
@@ -188,10 +189,10 @@ export default {
             importOptions: {},
             tableOptions: {},
             checkStatus: false,
-            tabName: "products",
-            routeName: "products",
+            tabName: "ingredients",
+            routeName: "ingredients",
             modalOptions: {},
-            modalID: "#product-add-edit-modal",
+            modalID: "#ingredient-add-edit-modal",
             bus: new Vue()
         };
     },
@@ -205,7 +206,7 @@ export default {
         });
 
         this.$hub.$on("productEdit", function (id) {
-            instance.isActiveProduct = true;
+            instance.isActiveIngredient = true;
             instance.addEditAction(id);
         });
     },
@@ -223,12 +224,12 @@ export default {
             this.modalOptions = modalOptionData;
 
         },
-        disableProductModal() {
-            this.isActiveProduct = false;
+        disableIngredientModal() {
+            this.isActiveIngredient = false;
         },
-        openProductModal() {
-            this.isActiveProduct = true;
-            $("#product-add-edit-modal").modal("show");
+        openIngredientModal() {
+            this.isActiveIngredient = true;
+            $("#ingredient-add-edit-modal").modal("show");
         },
         openModal(data) {
             this.isImportModalActive = true;

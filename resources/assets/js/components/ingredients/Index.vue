@@ -5,7 +5,7 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb bg-transparent m-0">
                 <li class="breadcrumb-item">
-                    <span>{{trans('lang.products')}}</span>
+                    <span>{{trans('lang.ingredients')}}</span>
                 </li>
             </ol>
         </nav>
@@ -39,7 +39,7 @@
                 componentName: null,
                 loadSales:[],
                 tabs:[
-                    { name:"products", lang:"lang.products", component: "all-products" },
+                    { name:"products", lang:"lang.ingredients", component: "all-ingredients" },
                     // { name:"product_category", lang:"lang.categories", component: "product-categories" },
                     // { name:"product_brand", lang:"lang.brands", component: "product-brands" },
                     // { name:"product_group", lang:"lang.groups", component: "product-groups" },
