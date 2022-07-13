@@ -29,8 +29,10 @@ class CreateIngredientsTable extends Migration
             $table->integer('branch_id')->nullable();
             $table->string('imageURL')->nullable();
             $table->integer('created_by')->nullable();
-            $table->dateTime('created_at')->nullable();
-            $table->dateTime('updated_at')->nullable();
+            // $table->dateTime('created_at')->nullable();
+            // $table->dateTime('updated_at')->nullable();
+
+            // $table->integer('number')->nullable();
         });
     }
 

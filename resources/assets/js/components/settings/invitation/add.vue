@@ -211,37 +211,16 @@ export default {
     },
 
     methods: {
-        // close() {
-        //     this.$emit('close');
-        // },
         addUser() {
-            // alert('Data saved successfully');
-            // console.log("adduser is called", this.user_data);
             let instance = this;
             this.submitted = true;
-            // console.log("data here : ", this.user_data.first_name, this.user_data.last_name)
-            // console.log("Something");
-            // console.log("branch: "+ this.user_data.branchPermission);
 
             this.$validator.validateAll().then(result => {
                 if (result) {
                         this.postDataMethod("/add-user", this.user_data);
-               
-                        // axios.post("/add-user", this.user_data).then(
-                
-                        //     console.log("This works !!")
-                        // ).catch(error => {
-               
-                        //     console.log("Error on adding user.",  error);
-               
-                        // });
-                       
-                    }else{
-                        
+                    }else{  
                     }
             });
-          
-            
         },
         postDataThenFunctionality() {
             $(this.modalID).modal("hide");
@@ -257,7 +236,6 @@ export default {
                 "/all-role-id",
                 function (response) {
                     instance.roles = response.data;
-                    // console.log("Roles : "+instance.roles);
                     instance.setPreLoader(true);
                 },
                 function () {

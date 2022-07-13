@@ -25,6 +25,8 @@
                                                   buttonText="export"
                                                   v-on:submit="exportStatus"/>
                         </div>
+
+
                         <!-- <div class="py-1 pl-1 pr-0">
                             <button type="button"
                                     class="btn btn-primary app-color dropdown-toggle"
@@ -55,13 +57,17 @@
                                 </a>
                             </div>
                         </div> -->
+
+
+
                     </div>
                 </div>
             </div>
+
             <datatable-component class="main-layout-card-content"
                                  :options="tableOptions"
                                  :exportData="exportToVue"
-                                 exportFileName="products"
+                                 exportFileName="ingredients"
                                  @resetStatus="resetExportValue"
                                  @printData="printData"
                                  @printBarcode="printBarcode"

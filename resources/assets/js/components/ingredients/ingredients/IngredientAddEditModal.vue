@@ -132,11 +132,11 @@
                         <input
                             type="file"
                             class="custom-file-input"
-                            id="product-image"
+                            id="ingredient-image"
                             accept="image/*"
                             @change="productImage"
                         />
-                        <label class="custom-file-label text-truncate" for="product-image">
+                        <label class="custom-file-label text-truncate" for="ingredient-image">
                             {{ trans('lang.image_only')
                             }}
                         </label>
@@ -1263,7 +1263,7 @@ export default {
                         }
                         if (this.id) {
                             this.postDataMethod(
-                                "/products/edit/" + instance.id,
+                                "/ingredients/edit/" + instance.id,
                                 {
                                     name: instance.product.pName,
                                     description: instance.product.description,
@@ -1289,7 +1289,7 @@ export default {
                                 }
                             );
                         } else {
-                            this.postDataMethod("/products/store", {
+                            this.postDataMethod("/ingredients/store", {
                                 name: instance.product.pName,
                                 description : instance.product.description,
                                 taxID: instance.product.tax,
@@ -1319,7 +1319,7 @@ export default {
         },
         productImage(event) {
             let fileName = event.target.files[0].name;
-            $("#product-image")
+            $("#ingredient-image")
                 .next(".custom-file-label")
                 .html(fileName);
             let input = event.target;
@@ -1358,7 +1358,7 @@ export default {
         postDataThenFunctionality(response) {
             this.closeModal();
             let instance = this;
-            $("#product-add-edit-modal").modal("hide");
+            $("#ingredient-add-edit-modal").modal("hide");
             instance.$hub.$emit("reloadDataTable");
         },
         postDataCatchFunctionality(error) {},

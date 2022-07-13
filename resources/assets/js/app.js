@@ -211,7 +211,6 @@ Vue.component('sms-setting', require('./components/settings/sms/smsSettings.vue'
 
 //Invite user
 Vue.component('invite-user', require('./components/settings/invitation/invite.vue'));
-Vue.component('add-user', require('./components/settings/invitation/add.vue'));
 Vue.component('user-list', require('./components/settings/invitation/userList.vue'));
 Vue.component('admin-confirmation-modal', require('./components/settings/invitation/adminConfirmationModal.vue'));
 Vue.component('email-setting', require('./components/settings/email/EmailSetting.vue'));
@@ -220,6 +219,7 @@ Vue.component('setting-index', require('./components/settings/SettingsIndex.vue'
 Vue.component('application-setting', require('./components/settings/application/AppSetting.vue'));
 
 // Add user
+Vue.component('add-user', require('./components/settings/invitation/add.vue'));
 
 //Sales settings
 Vue.component('sales-setting', require('./components/settings/sales/salesSetting.vue'));

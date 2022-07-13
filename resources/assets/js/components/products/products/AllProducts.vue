@@ -24,7 +24,7 @@
                                                   buttonText="export"
                                                   v-on:submit="exportStatus"/>
                         </div>
-                        <div class="py-1 pl-1 pr-0">
+                        <!-- <div class="py-1 pl-1 pr-0">
                             <button type="button"
                                     class="btn btn-primary app-color dropdown-toggle"
                                     data-toggle="dropdown">
@@ -53,7 +53,7 @@
                                     {{ trans('lang.print_barcode') }}
                                 </a>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>

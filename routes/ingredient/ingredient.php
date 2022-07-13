@@ -12,88 +12,89 @@ use App\Http\Controllers\API\IngredientsApiController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'ingredients', 'as' => 'ingredients'], function () {
-    //Route::get('ingredients', [IngredientsApiController::class, 'index']);
+    Route::get('ingredients', [IngredientsApiController::class, 'index']);
 
     //  Ingredients
-    // Route::post('ingredients', [IngredientsController::class, 'ingredientPage']);
+    //Route::post('ingredients', [IngredientsController::class, 'ingredientPage']);
     // Route::post('ingredients', function () {
     //     return 'welcome to dashboard!';
     // });
-    // Route::post('store', [ProductsController::class, 'storeProduct'])
-    //     ->middleware('permissions:can_manage_products');
 
-    // Route::post('delete/{id}', [ProductsController::class, 'deleteProduct'])
-    //     ->middleware('permissions:can_manage_products');
+    Route::post('store', [IngredientsController::class, 'storeIngredient'])
+        ->middleware('permissions:can_manage_products');
 
-    // Route::get('all-supporting-data', [ProductsController::class, 'productSupportingData']);
+    Route::post('delete/{id}', [ProductsController::class, 'deleteProduct'])
+        ->middleware('permissions:can_manage_products');
 
-    // Route::get('edit-product/{id}', [ProductsController::class, 'getProductEditData']);
+    Route::get('all-supporting-data', [ProductsController::class, 'productSupportingData']);
 
-    // Route::post('edit/{id}', [ProductsController::class, 'editProduct']);
+    Route::get('edit-product/{id}', [ProductsController::class, 'getProductEditData']);
 
-    // Route::get('getDetails/{id}', [ProductsController::class, 'getProductDetails']);
-    // Route::post('variantDetails/{id}', [ProductsController::class, 'getVariantDetails']);
-    // Route::post('/import', [ProductsController::class, 'importProduct'])
-    //     ->middleware('permissions:can_manage_products');
-    // Route::post('/import-stock', [ProductsController::class, 'importOpeningStock'])
-    //     ->middleware('permissions:can_manage_products');
-    // Route::get('/supporting-data', [ProductsController::class, 'getSupportingData']);
-    // Route::post('/adjust-stock', [ProductsController::class, 'adjustStockData']);
-    // Route::get('/search-product-for-stock-adjustment', [ProductsController::class, 'searchProductForStockAdjust']);
+    Route::post('edit/{id}', [ProductsController::class, 'editProduct']);
 
-    // // Variants
-    // Route::get('variant/{id}', [ProductsController::class, 'showVariant']);
+    Route::get('getDetails/{id}', [ProductsController::class, 'getProductDetails']);
+    Route::post('variantDetails/{id}', [ProductsController::class, 'getVariantDetails']);
+    Route::post('/import', [ProductsController::class, 'importProduct'])
+        ->middleware('permissions:can_manage_products');
+    Route::post('/import-stock', [ProductsController::class, 'importOpeningStock'])
+        ->middleware('permissions:can_manage_products');
+    Route::get('/supporting-data', [ProductsController::class, 'getSupportingData']);
+    Route::post('/adjust-stock', [ProductsController::class, 'adjustStockData']);
+    Route::get('/search-product-for-stock-adjustment', [ProductsController::class, 'searchProductForStockAdjust']);
 
-    // // Product Category
-    // Route::get('category', [ProductCategoriesController::class, 'index']);
-    // Route::post('categories', [ProductCategoriesController::class, 'getCategory']);
-    // Route::post('category/store', [ProductCategoriesController::class, 'storeCategory'])
-    //     ->middleware('permissions:can_manage_categories');
-    // Route::post('category/delete/{id}', [ProductCategoriesController::class, 'deleteCategory'])
-    //     ->middleware('permissions:can_manage_categories');
-    // Route::get('category/{id}', [ProductCategoriesController::class, 'showCategory']);
-    // Route::post('category/{id}', [ProductCategoriesController::class, 'updateCategory'])
-    //     ->middleware('permissions:can_manage_categories');
+    // Variants
+    Route::get('variant/{id}', [ProductsController::class, 'showVariant']);
 
-    // // Product Brand
-    // Route::get('brand', [ProductBrandsController::class, 'index']);
-    // Route::post('brands', [ProductBrandsController::class, 'getBrand']);
-    // Route::post('brand/store', [ProductBrandsController::class, 'storeBrand'])
-    //     ->middleware('permissions:can_manage_brands');
-    // Route::post('brand/delete/{id}', [ProductBrandsController::class, 'deleteBrand']);
-    // Route::get('brand/{id}', [ProductBrandsController::class, 'showBrand']);
-    // Route::post('brand/{id}', [ProductBrandsController::class, 'updateBrand'])
-    //     ->middleware('permissions:can_manage_brands');
+    // Product Category
+    Route::get('category', [ProductCategoriesController::class, 'index']);
+    Route::post('categories', [ProductCategoriesController::class, 'getCategory']);
+    Route::post('category/store', [ProductCategoriesController::class, 'storeCategory'])
+        ->middleware('permissions:can_manage_categories');
+    Route::post('category/delete/{id}', [ProductCategoriesController::class, 'deleteCategory'])
+        ->middleware('permissions:can_manage_categories');
+    Route::get('category/{id}', [ProductCategoriesController::class, 'showCategory']);
+    Route::post('category/{id}', [ProductCategoriesController::class, 'updateCategory'])
+        ->middleware('permissions:can_manage_categories');
 
-    // // Product Group
-    // Route::get('group', [ProductGroupsController::class, 'getGroup']);
-    // Route::post('groups', [ProductGroupsController::class, 'getAllGroup']);
-    // Route::post('group/store', [ProductGroupsController::class, 'storeGroup'])
-    //     ->middleware('permissions:can_manage_groups');
-    // Route::post('group/delete/{id}', [ProductGroupsController::class, 'deleteGroup'])
-    //     ->middleware('permissions:can_manage_groups');
-    // Route::get('group/{id}', [ProductGroupsController::class, 'showGroup']);
-    // Route::post('group/{id}', [ProductGroupsController::class, 'updateGroup'])
-    //     ->middleware('permissions:can_manage_groups');
-    // Route::delete('group/delete/{id}', [ProductGroupsController::class, 'deleteGroup'])
-    //     ->middleware('permissions:can_manage_groups');
+    // Product Brand
+    Route::get('brand', [ProductBrandsController::class, 'index']);
+    Route::post('brands', [ProductBrandsController::class, 'getBrand']);
+    Route::post('brand/store', [ProductBrandsController::class, 'storeBrand'])
+        ->middleware('permissions:can_manage_brands');
+    Route::post('brand/delete/{id}', [ProductBrandsController::class, 'deleteBrand']);
+    Route::get('brand/{id}', [ProductBrandsController::class, 'showBrand']);
+    Route::post('brand/{id}', [ProductBrandsController::class, 'updateBrand'])
+        ->middleware('permissions:can_manage_brands');
 
-    // // Product Attribute
-    // Route::get('attribute', [ProductAttributesController::class, 'getAttribute']);
-    // Route::post('variant-attributes', [ProductAttributesController::class, 'getAttributeList']);
-    // Route::get('product-variant-attribute', [ProductAttributesController::class, 'getProductAttributeList']);
-    // Route::post('attribute/store', [ProductAttributesController::class, 'storeAttribute'])
-    //     ->middleware('permissions:can_manage_variant_attribute');
-    // Route::post('attribute/delete/{id}', [ProductAttributesController::class, 'deleteAttribute'])
-    //     ->middleware('permissions:can_manage_variant_attribute');
-    // Route::get('attribute/{id}', [ProductAttributesController::class, 'showAttribute']);
-    // Route::post('attribute/{id}', [ProductAttributesController::class, 'updateAttribute'])
-    //     ->middleware('permissions:can_manage_variant_attribute');
+    // Product Group
+    Route::get('group', [ProductGroupsController::class, 'getGroup']);
+    Route::post('groups', [ProductGroupsController::class, 'getAllGroup']);
+    Route::post('group/store', [ProductGroupsController::class, 'storeGroup'])
+        ->middleware('permissions:can_manage_groups');
+    Route::post('group/delete/{id}', [ProductGroupsController::class, 'deleteGroup'])
+        ->middleware('permissions:can_manage_groups');
+    Route::get('group/{id}', [ProductGroupsController::class, 'showGroup']);
+    Route::post('group/{id}', [ProductGroupsController::class, 'updateGroup'])
+        ->middleware('permissions:can_manage_groups');
+    Route::delete('group/delete/{id}', [ProductGroupsController::class, 'deleteGroup'])
+        ->middleware('permissions:can_manage_groups');
 
-    // // Product Units
-    // Route::post('unit/store', [ProductUnitsController::class, 'store']);
-    // Route::post('units', [ProductUnitsController::class, 'getUnit']);
-    // Route::post('unit/{id}', [ProductUnitsController::class, 'update']);
-    // Route::get('unit/{id}', [ProductUnitsController::class, 'show']);
-    // Route::post('unit/delete/{id}', [ProductUnitsController::class, 'delete']);
+    // Product Attribute
+    Route::get('attribute', [ProductAttributesController::class, 'getAttribute']);
+    Route::post('variant-attributes', [ProductAttributesController::class, 'getAttributeList']);
+    Route::get('product-variant-attribute', [ProductAttributesController::class, 'getProductAttributeList']);
+    Route::post('attribute/store', [ProductAttributesController::class, 'storeAttribute'])
+        ->middleware('permissions:can_manage_variant_attribute');
+    Route::post('attribute/delete/{id}', [ProductAttributesController::class, 'deleteAttribute'])
+        ->middleware('permissions:can_manage_variant_attribute');
+    Route::get('attribute/{id}', [ProductAttributesController::class, 'showAttribute']);
+    Route::post('attribute/{id}', [ProductAttributesController::class, 'updateAttribute'])
+        ->middleware('permissions:can_manage_variant_attribute');
+
+    // Product Units
+    Route::post('unit/store', [ProductUnitsController::class, 'store']);
+    Route::post('units', [ProductUnitsController::class, 'getUnit']);
+    Route::post('unit/{id}', [ProductUnitsController::class, 'update']);
+    Route::get('unit/{id}', [ProductUnitsController::class, 'show']);
+    Route::post('unit/delete/{id}', [ProductUnitsController::class, 'delete']);
 });

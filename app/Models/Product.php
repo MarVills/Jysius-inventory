@@ -8,11 +8,13 @@ use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use App\Libraries\searchHelper;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 class Product extends BaseModel
 
 {
     protected $fillable = ['title', 'description', 'category_id', 'brand_id', 'unit_id', 'group_id', 'taxable', 'tax_type', 'tax_id', 'product_type', 'branch_id', 'imageURL', 'created_by'];
-
+ 
     public static function groupId($id)
     {
         return Product::where('group_id', $id)->count();
