@@ -57,9 +57,6 @@
                                 </a>
                             </div>
                         </div> -->
-
-
-
                     </div>
                 </div>
             </div>
@@ -322,7 +319,7 @@ export default {
         getData() {
             let instance = this;
             instance.axiosGet(
-                "/products/supporting-data",
+                "/ingredients/supporting-data",
                 function (response) {
                     instance.variantData = response.data.variant;
                     let category = [
@@ -338,7 +335,7 @@ export default {
                             ...response.data.brand
                         ];
                     instance.tableOptions = {
-                        tableName: "products",
+                        tableName: "ingredients",
                         columns: [
                             {
                                 title: "lang.title",
@@ -397,7 +394,7 @@ export default {
                                 }
                                 : {}
                         ],
-                        source: "/products/products",
+                        source: "/ingredients/ingredients",
                         search: true,
                         checkbox: false,
                         right_align: ['action', 'product_quantity', 'purchase_price', 'selling_price'],

@@ -13,12 +13,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'ingredients', 'as' => 'ingredients'], function () {
     Route::get('ingredients', [IngredientsApiController::class, 'index']);
-
-    //  Ingredients
-    //Route::post('ingredients', [IngredientsController::class, 'ingredientPage']);
-    // Route::post('ingredients', function () {
-    //     return 'welcome to dashboard!';
-    // });
+    Route::post('ingredients', [IngredientsController::class, 'getIngredient']);
 
     Route::post('store', [IngredientsController::class, 'storeIngredient'])
         ->middleware('permissions:can_manage_products');
@@ -38,7 +33,7 @@ Route::group(['prefix' => 'ingredients', 'as' => 'ingredients'], function () {
         ->middleware('permissions:can_manage_products');
     Route::post('/import-stock', [ProductsController::class, 'importOpeningStock'])
         ->middleware('permissions:can_manage_products');
-    Route::get('/supporting-data', [ProductsController::class, 'getSupportingData']);
+    Route::get('/supporting-data', [IngredientsController::class, 'getSupportingData']);
     Route::post('/adjust-stock', [ProductsController::class, 'adjustStockData']);
     Route::get('/search-product-for-stock-adjustment', [ProductsController::class, 'searchProductForStockAdjust']);
 

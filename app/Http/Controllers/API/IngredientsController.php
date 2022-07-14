@@ -36,10 +36,10 @@ class IngredientsController extends Controller
         return new Permissions();
     }
 
-    public function getProduct(Request $request)
+    public function getIngredient(Request $request)
     {
         
-        $products = Product::getAllData($request);
+        $products = Ingredient::getAllData($request);
         $this->setBarcode($products['data']);
 
         if (empty($request->reqType)) {
@@ -900,10 +900,10 @@ class IngredientsController extends Controller
 
     public function getSupportingData()
     {
-        $category = ProductCategory::index(['name as text', 'id as value']);
-        $group = ProductGroup::index(['name as text', 'id as value']);
-        $brand = ProductBrand::index(['name as text', 'id as value']);
-        $variant = ProductVariant::index(['sku as sku', 'bar_code as bar_code', 'product_id as product_id', 'attribute_values as attribute_values']);
+        $category = []; //ProductCategory::index(['name as text', 'id as value']);
+        $group = []; //ProductGroup::index(['name as text', 'id as value']);
+        $brand = []; //ProductBrand::index(['name as text', 'id as value']);
+        $variant = [];//ProductVariant::index(['sku as sku', 'bar_code as bar_code', 'product_id as product_id', 'attribute_values as attribute_values']);
         return ['category' => $category, 'group' => $group, 'brand' => $brand, 'variant' => $variant];
     }
 
