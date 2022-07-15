@@ -15,7 +15,6 @@ class CreateIngredientsTable extends Migration
     {
         Schema::create('ingredients', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->string('title');
             $table->longText('description')->nullable();
             $table->integer('category_id')->nullable();
@@ -29,6 +28,7 @@ class CreateIngredientsTable extends Migration
             $table->integer('branch_id')->nullable();
             $table->string('imageURL')->nullable();
             $table->integer('created_by')->nullable();
+            $table->timestamps();
             // $table->dateTime('created_at')->nullable();
             // $table->dateTime('updated_at')->nullable();
 

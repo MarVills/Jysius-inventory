@@ -182,65 +182,69 @@ class Ingredient extends Model
 
    public static function getAllData($request)
    {
-       if ($request->columnKey) $columnName = $request->columnKey;
-       if ($request->rowLimit) $limit = $request->rowLimit;
+        $data = DB::table('ingredients')->get();
+        return $data;
+        
+    //    if ($request->columnKey) $columnName = $request->columnKey;
+    //    if ($request->rowLimit) $limit = $request->rowLimit;
 
-       $offset = $request->rowOffset;
-       $searchValue = searchHelper::inputSearch($request->searchValue);
-       $columnSortedBy = $request->columnSortedBy;
-       $filtersData = $request->filtersData;
-       $requestType = $request->reqType;
+    //    $offset = $request->rowOffset;
+    //    $searchValue = searchHelper::inputSearch($request->searchValue);
+    //    $columnSortedBy = $request->columnSortedBy;
+    //    $filtersData = $request->filtersData;
+    //    $requestType = $request->reqType;
 
-       if ($columnName == 'group_name') $columnName = 'products.group_id';
-       else if ($columnName == 'brand_name') $columnName = 'products.brand_id';
-       else if ($columnName == 'category_name') $columnName = 'products.category_id';
-       else if ($columnName == 'title') $columnName = 'products.title';
-       else $columnName = 'products.id';
+    //    if ($columnName == 'group_name') $columnName = 'products.group_id';
+    //    else if ($columnName == 'brand_name') $columnName = 'products.brand_id';
+    //    else if ($columnName == 'category_name') $columnName = 'products.category_id';
+    //    else if ($columnName == 'title') $columnName = 'products.title';
+    //    else $columnName = 'ingredients.id';
 
-       $query = Product::query()->leftJoin('product_groups', 'products.group_id', '=', 'product_groups.id')
-           ->leftJoin('product_categories', 'products.category_id', '=', 'product_categories.id')
-           ->leftJoin('product_brands', 'products.brand_id', '=', 'product_brands.id')
-           ->leftJoin('order_items', 'products.id', '=', 'order_items.product_id')
-           ->groupBy('products.id')
-           ->select(
-               'products.*',
-               'product_groups.name as group_name',
-               'product_categories.name as category_name',
-               'product_brands.name as brand_name',
-               DB::raw('sum(order_items.quantity) as product_quantity')
-           );
+    //    $query = Ingredient::query()
+    //         ->leftJoin('product_groups', 'products.group_id', '=', 'product_groups.id')
+    //         ->leftJoin('product_categories', 'products.category_id', '=', 'product_categories.id')
+    //         ->leftJoin('product_brands', 'products.brand_id', '=', 'product_brands.id')
+    //         ->leftJoin('order_items', 'products.id', '=', 'order_items.product_id')
+    //         ->groupBy('ingredients.id')
+    //         ->select(
+    //            'ingredients.*',
+    //            'product_groups.name as group_name',
+    //            'product_categories.name as category_name',
+    //            'product_brands.name as brand_name',
+    //            DB::raw('sum(order_items.quantity) as product_quantity')
+    //        );
 
-       if (!empty($filtersData)) {
-           foreach ($filtersData as $singleFilter) {
-               if (array_key_exists('key', $singleFilter) && $singleFilter['key'] == "group") {
-                   $query->where('products.group_id', $singleFilter['value']);
-               } else if (array_key_exists('key', $singleFilter) && $singleFilter['key'] == "brand") {
-                   $query->where('products.brand_id', $singleFilter['value']);
-               } else if (array_key_exists('key', $singleFilter) && $singleFilter['key'] == "category") {
-                   $query->where('products.category_id', $singleFilter['value']);
-               }
-           }
-       }
+    //    if (!empty($filtersData)) {
+    //        foreach ($filtersData as $singleFilter) {
+    //            if (array_key_exists('key', $singleFilter) && $singleFilter['key'] == "group") {
+    //                $query->where('products.group_id', $singleFilter['value']);
+    //            } else if (array_key_exists('key', $singleFilter) && $singleFilter['key'] == "brand") {
+    //                $query->where('products.brand_id', $singleFilter['value']);
+    //            } else if (array_key_exists('key', $singleFilter) && $singleFilter['key'] == "category") {
+    //                $query->where('products.category_id', $singleFilter['value']);
+    //            }
+    //        }
+    //    }
 
-       if ($searchValue) {
-           $query->where('products.title', 'LIKE', '%' . $searchValue . '%')
-               ->orWhere('product_categories.name', 'LIKE', '%' . $searchValue . '%')
-               ->orWhere('product_brands.name', 'LIKE', '%' . $searchValue . '%')
-               ->orWhere('product_groups.name', 'LIKE', '%' . $searchValue . '%');
-       }
+    //    if ($searchValue) {
+    //        $query->where('products.title', 'LIKE', '%' . $searchValue . '%')
+    //            ->orWhere('product_categories.name', 'LIKE', '%' . $searchValue . '%')
+    //            ->orWhere('product_brands.name', 'LIKE', '%' . $searchValue . '%')
+    //            ->orWhere('product_groups.name', 'LIKE', '%' . $searchValue . '%');
+    //    }
 
-       if (empty($requestType)) {
-           $count = $query->get()->count();
+    //    if (empty($requestType)) {
+    //        $count = $query->get()->count();
 
-           $products = $query->orderBy($columnName, $columnSortedBy)->take($limit)->skip($offset)->get();
-           $products = Product::getProductVariants($products);
+    //        $products = $query->orderBy($columnName, $columnSortedBy)->take($limit)->skip($offset)->get();
+    //        $products = Ingredient::getProductVariants($products);
 
-           return ['data' => $products, 'count' => $count];
-       } else {
-           $products = $query->get();
-           $products = Product::getProductVariants($products);
-           return $products;
-       }
+    //        return ['data' => $products, 'count' => $count];
+    //    } else {
+    //        $products = $query->get();
+    //        $products = Ingredient::getProductVariants($products);
+    //        return $products;
+    //    }
    }
 
 
